@@ -1,5 +1,6 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Header from "../components/Header";
+import { VideoSection } from "../components/VideoSection";
 import VideoCalculator from "../components/VideoCalculator";
 import InstagramFeed from "../components/InstagramFeed";
 import Footer from "../components/Footer";
@@ -8,10 +9,29 @@ import Image from 'next/image';
 export default function Home() {
   const [purchasedVideos, setPurchasedVideos] = useState([]);
   const [previewVideo, setPreviewVideo] = useState(null);
+  const [adminVideos, setAdminVideos] = useState([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    fetchAdminVideos();
+  }, []);
+
+  const fetchAdminVideos = async () => {
+    try {
+      const response = await fetch('/api/admin/videos');
+      if (response.ok) {
+        const data = await response.json();
+        setAdminVideos(data);
+      }
+    } catch (error) {
+      console.error('Error fetching videos:', error);
+    } finally {
+      setLoading(false);
+    }
+  };
 
   const handleVideoPurchase = async (videoId) => {
     try {
-      // Hier würden Sie normalerweise die Stripe-Integration implementieren
       const response = await fetch('/api/video-purchase', {
         method: 'POST',
         headers: {
@@ -22,7 +42,6 @@ export default function Home() {
 
       if (response.ok) {
         setPurchasedVideos([...purchasedVideos, videoId]);
-        // Nach erfolgreicher Zahlung den Download-Button aktivieren
         const downloadButton = document.querySelector(`#download-${videoId}`);
         if (downloadButton) {
           downloadButton.classList.remove('cursor-not-allowed', 'bg-gray-800');
@@ -36,55 +55,33 @@ export default function Home() {
     }
   };
 
-  const shopArticles = [
-    {
-      id: 1,
-      title: "Goldene Handschellen",
-      price: "89,99 €",
-      image: "/videos/blindfold-harness-and-ball-gag-194871.png",
-      description: "Luxuriöse Handschellen in Gold-Optik"
-    },
-    {
-      id: 2,
-      title: "Satin Augenbinde",
-      price: "29,99 €",
-      image: "/videos/blindfold-harness-and-ball-gag-194871.png",
-      description: "Weiche Augenbinde aus hochwertigem Satin"
-    },
-    {
-      id: 3,
-      title: "Leder Peitsche",
-      price: "69,99 €",
-      image: "/videos/blindfold-harness-and-ball-gag-194871.png",
-      description: "Handgefertigte Lederpeitsche"
-    },
-    {
-      id: 4,
-      title: "Seil Set",
-      price: "49,99 €",
-      image: "/videos/blindfold-harness-and-ball-gag-194871.png",
-      description: "Hochwertiges Seil-Set aus Baumwolle"
-    },
-    {
-      id: 5,
-      title: "Latex Handschuhe",
-      price: "39,99 €",
-      image: "/videos/blindfold-harness-and-ball-gag-194871.png",
-      description: "Elegante Latex-Handschuhe"
-    },
-    {
-      id: 6,
-      title: "Federn Set",
-      price: "24,99 €",
-      image: "/videos/blindfold-harness-and-ball-gag-194871.png",
-      description: "Sanfte Federn für zärtliche Berührungen"
-    }
-  ];
-
-  // Neue Funktion zum Handling des Video-Previews
   const handlePreviewEnd = () => {
     setPreviewVideo(null);
   };
+
+  const shopArticles = [
+    {
+      id: 1,
+      title: "Getragene Socken",
+      price: "39,99 €",
+      image: "/videos/meliaxsocken.jpg",
+      description: "3 Tage getragene Socken"
+    },
+    {
+      id: 2,
+      title: "Getragener String",
+      price: "59,99 €",
+      image: "/videos/meliaxsocken.jpg",
+      description: "24 Stunden getragener String"
+    },
+    {
+      id: 3,
+      title: "Polaroid Set",
+      price: "99,99 €",
+      image: "/videos/meliaxsocken.jpg",
+      description: "5 handgeschriebene Polaroid Fotos"
+    }
+  ];
 
   return (
     <div className="min-h-screen bg-black text-white mt-12">
@@ -102,8 +99,7 @@ export default function Home() {
             }}
           />
           <div className="relative z-10 h-full flex flex-col items-center justify-center">
-           
-            <h1 className="text-4xl md:text-6xl font-evogria  text-[#e3cbaa] mb-4">
+            <h1 className="text-4xl md:text-6xl font-evogria text-[#e3cbaa] mb-4">
               MELIAX
             </h1>
             <p className="text-xl font-coterie text-[#d0b48f]">
@@ -112,48 +108,20 @@ export default function Home() {
           </div>
         </section>
 
- {/* Video Section */}
- <section className="mb-28 text-center" id="videos">
+        {/* Video Section */}
+        <section className="mb-28 text-center" id="videos">
           <h2 className="text-3xl font-bold text-[#e3cbaa] mb-8">
             Meine Videos
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {[
-              {
-                id: 1,
-                title: "Blowjob Car",
-                price: "79,99 €",
-                image: "/videos/blowjobcar.jpg",
-                description: "Ein geiler Blowjob im Auto",
-                downloadUrl: "/videos/shower-time.mp4",
-                isPurchased: false
-              },
-              {
-                id: 2,
-                title: "Shower Time",
-                price: "84,99 €",
-                image: "/videos/blowjobcar.jpg",
-                description: "Heißes Duscherlebnis in 4K Qualität",
-                downloadUrl: "/videos/shower-time.mp4",
-                isPurchased: false
-              },
-              {
-                id: 3,
-                title: "Private Dance",
-                price: "79,99 €",
-                image: "/videos/blowjobcar.jpg",
-                description: "Exklusiver Privattanz nur für dich",
-                downloadUrl: "/videos/private-dance.mp4",
-                isPurchased: false
-              }
-            ].map((video) => (
+            {adminVideos.map((video) => (
               <div 
                 key={video.id}
                 className="bg-gray-900 rounded-lg overflow-hidden hover:transform hover:scale-105 transition-transform duration-300"
               >
                 <div className="relative aspect-video border-4 border-[#e3cbaa] rounded-lg overflow-hidden">
                   <Image
-                    src={video.image}
+                    src={video.thumbnail_url || "/videos/placeholder.jpg"}
                     alt={video.title}
                     fill
                     className="object-cover"
@@ -169,12 +137,12 @@ export default function Home() {
                   </p>
                   <div className="flex justify-between items-center gap-4">
                     <span className="text-[#e3cbaa] text-xl font-bold">
-                      {video.price}
+                      {video.price.toFixed(2)} €
                     </span>
                     <div className="flex gap-2">
-                      {video.id === 1 && ( // Nur für Blowjob Car Video
+                      {video.preview_url && (
                         <button 
-                          onClick={() => setPreviewVideo("/videos/liabjcar.mp4")}
+                          onClick={() => setPreviewVideo(video.preview_url)}
                           className="bg-[#e3cbaa] text-black px-4 py-2 rounded-lg hover:bg-[#d0b48f] transition-colors"
                         >
                           Preview
@@ -182,8 +150,8 @@ export default function Home() {
                       )}
                       <button 
                         className="bg-gray-800 text-gray-400 px-4 py-2 rounded-lg cursor-not-allowed"
-                        disabled={!video.isPurchased}
-                        title={!video.isPurchased ? "Erst nach dem Kauf verfügbar" : ""}
+                        disabled={!purchasedVideos.includes(video.id)}
+                        title={!purchasedVideos.includes(video.id) ? "Erst nach dem Kauf verfügbar" : ""}
                       >
                         <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
@@ -203,12 +171,8 @@ export default function Home() {
           </div>
         </section>
 
-
-
-
         {/* Video Calculator Section */}
         <section className="mb-24 pt-2 mx-auto text-center" id="calculator">
-          
           <VideoCalculator />
         </section>
 
@@ -218,29 +182,7 @@ export default function Home() {
             Shop
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {[
-              {
-                id: 1,
-                title: "Getragene Socken",
-                price: "39,99 €",
-                image: "/videos/meliaxsocken.jpg",
-                description: "3 Tage getragene Socken"
-              },
-              {
-                id: 2,
-                title: "Getragener String",
-                price: "59,99 €",
-                image: "/videos/meliaxsocken.jpg",
-                description: "24 Stunden getragener String"
-              },
-              {
-                id: 3,
-                title: "Polaroid Set",
-                price: "99,99 €",
-                image: "/videos/meliaxsocken.jpg",
-                description: "5 handgeschriebene Polaroid Fotos"
-              }
-            ].map((product) => (
+            {shopArticles.map((product) => (
               <div 
                 key={product.id}
                 className="bg-gray-900 rounded-lg overflow-hidden hover:transform hover:scale-105 transition-transform duration-300"
@@ -351,7 +293,7 @@ export default function Home() {
 
       <Footer />
 
-      {/* Am Ende der return-Anweisung, vor dem schließenden div: */}
+      {/* Video Preview Modal */}
       {previewVideo && (
         <div className="fixed inset-0 bg-black bg-opacity-75 flex items-center justify-center z-50">
           <div className="relative w-full max-w-4xl">

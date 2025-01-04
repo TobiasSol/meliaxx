@@ -1,8 +1,8 @@
 import { useState, useEffect } from 'react';
 import { useRouter } from 'next/router';
 import { BarChart, DollarSign, ShoppingBag, Users } from 'lucide-react';
-import PasswordSettings from '../../components/PasswordSettings';
 import AdminSettings from '../../components/AdminSettings';
+import VideoManagement from '../../components/VideoManagement';
 
 
 export default function AdminDashboard() {
@@ -135,6 +135,12 @@ export default function AdminDashboard() {
             </tbody>
           </table>
         </div>
+        <div>
+
+
+  <h1 className="text-2xl mt-24"></h1>
+  <VideoManagement />
+</div>
 
         <div className="mt-8">
           <h2 className="text-2xl font-bold text-[#e3cbaa] mb-6">Website Einstellungen</h2>

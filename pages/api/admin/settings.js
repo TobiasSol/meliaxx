@@ -1,20 +1,17 @@
+// pages/api/admin/settings.js
 import { createClient } from '@supabase/supabase-js';
-import { withAuth } from '../../../lib/withAuth';
+import { withAuth } from '../../../utils/withAuth';
 
+// Initialisiere Supabase mit Service Role Key
 const supabase = createClient(
   process.env.NEXT_PUBLIC_SUPABASE_URL,
-  process.env.SUPABASE_SERVICE_KEY,
-  {
-    auth: {
-      autoRefreshToken: false,
-      persistSession: false
-    }
-  }
+  process.env.SUPABASE_SERVICE_ROLE_KEY
 );
 
 async function handler(req, res) {
-  if (req.method === 'GET') {
-    try {
+  try {
+    // GET Request
+    if (req.method === 'GET') {
       const { data, error } = await supabase
         .from('settings')
         .select('*')
@@ -27,14 +24,10 @@ async function handler(req, res) {
         preloaderenabled: true,
         sitepassword: ''
       });
-    } catch (error) {
-      console.error('Fehler beim Laden der Einstellungen:', error);
-      return res.status(500).json({ message: 'Fehler beim Laden der Einstellungen' });
     }
-  }
 
-  if (req.method === 'POST') {
-    try {
+    // POST Request
+    if (req.method === 'POST') {
       const settings = req.body;
 
       const { data, error } = await supabase
@@ -50,14 +43,16 @@ async function handler(req, res) {
       if (error) throw error;
 
       return res.status(200).json(data);
-    } catch (error) {
-      console.error('Fehler beim Speichern der Einstellungen:', error);
-      return res.status(500).json({ message: 'Fehler beim Speichern der Einstellungen' });
     }
-  }
 
-  return res.status(405).json({ message: 'Method not allowed' });
+    return res.status(405).json({ message: 'Methode nicht erlaubt' });
+  } catch (error) {
+    console.error('API Fehler:', error);
+    return res.status(500).json({ 
+      message: 'Interner Server Fehler',
+      error: error.message 
+    });
+  }
 }
 
-// Mit Authentifizierung schützen
 export default withAuth(handler);

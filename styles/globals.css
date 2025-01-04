@@ -1,0 +1,55 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  @apply bg-black text-white;
+  font-family: 'Evogria', sans-serif;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  @apply bg-gray-900;
+}
+
+::-webkit-scrollbar-thumb {
+  @apply bg-[#d0b48f] rounded-full;
+}
+
+/* Form Elements */
+input[type="checkbox"] {
+  @apply rounded border-[#d0b48f] text-[#e3cbaa] focus:ring-[#e3cbaa];
+}
+
+select {
+  @apply rounded border-[#d0b48f] focus:ring-[#e3cbaa] focus:border-[#e3cbaa];
+}
+
+@keyframes noise {
+  0%, 100% { transform: translate(0,0) }
+  10% { transform: translate(-5%,-5%) }
+  20% { transform: translate(-10%,5%) }
+  30% { transform: translate(5%,-10%) }
+  40% { transform: translate(-5%,15%) }
+  50% { transform: translate(-10%,5%) }
+  60% { transform: translate(15%,0) }
+  70% { transform: translate(0,10%) }
+  80% { transform: translate(-15%,0) }
+  90% { transform: translate(10%,5%) }
+}
+
+.noise-effect {
+  position: absolute;
+  top: -500%;
+  left: -500%;
+  right: -500%;
+  bottom: -500%;
+  background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyBAMAAADsEZWCAAAAGFBMVEUAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAMABA+AAAACHRSTlMzMzMzMzMzM85JBgUAAAABYktHRAH/Ai3eAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAPklEQVQ4y2NgGAWjYBSMglEwCkYBKeBUYmBgWsHA8B8KFBkYtBgY/v+HgkYGhgoGhv//ocCBgYGBYRQMNQAAPn0VK6HhJx8AAAAASUVORK5CYII=');
+  opacity: 0.3;
+  animation: noise .2s infinite;
+  pointer-events: none;
+}

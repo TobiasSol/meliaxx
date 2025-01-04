@@ -1,0 +1,33 @@
+{
+  "name": "meliax",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint"
+  },
+  "dependencies": {
+    "@stripe/stripe-js": "^5.4.0",
+    "@supabase/supabase-js": "^2.47.10",
+    "@tailwindcss/forms": "^0.5.9",
+    "axios": "^1.7.9",
+    "jsonwebtoken": "^9.0.2",
+    "lucide-react": "^0.469.0",
+    "next": "14.0.4",
+    "nodemailer": "^6.9.16",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-icons": "^5.4.0",
+    "stripe": "^17.5.0"
+  },
+  "devDependencies": {
+    "@eslint/eslintrc": "^3",
+    "autoprefixer": "^10.4.20",
+    "eslint": "^9",
+    "eslint-config-next": "15.1.3",
+    "postcss": "^8.4.49",
+    "tailwindcss": "^3.4.17"
+  }
+}

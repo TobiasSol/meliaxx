@@ -11,7 +11,6 @@
   "dependencies": {
     "@stripe/stripe-js": "^5.4.0",
     "@supabase/supabase-js": "^2.47.10",
-    "@tailwindcss/forms": "^0.5.9",
     "axios": "^1.7.9",
     "jsonwebtoken": "^9.0.2",
     "lucide-react": "^0.469.0",
@@ -24,6 +23,7 @@
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3",
+    "@tailwindcss/forms": "^0.5.9",
     "autoprefixer": "^10.4.20",
     "eslint": "^9",
     "eslint-config-next": "15.1.3",

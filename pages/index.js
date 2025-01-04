@@ -123,9 +123,9 @@ export default function Home() {
                 id: 1,
                 title: "Blowjob Car",
                 price: "79,99 €",
-                image: "https://ihre-cloud-url.com/videos/blowjobcar.jpg",
+                image: "/videos/blowjobcar.jpg",
                 description: "Ein geiler Blowjob im Auto",
-                downloadUrl: "https://ihre-cloud-url.com/videos/blowjobvideo.mov",
+                downloadUrl: "/videos/shower-time.mp4",
                 isPurchased: false
               },
               {

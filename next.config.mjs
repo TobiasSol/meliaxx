@@ -1,14 +1,10 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   reactStrictMode: true,
-  // Optimierungen für Vercel
-  // Falls Sie statische Exports verwenden
-  // output: 'export',
-
+  swcMinify: true,
   images: {
-    domains: ['picsum.photos'],
+    domains: [], // Hier können später bei Bedarf erlaubte Domains hinzugefügt werden
   },
-
 }
 
-export default nextConfig
+export default nextConfig;

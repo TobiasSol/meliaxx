@@ -17,18 +17,21 @@ body {
 }
 
 ::-webkit-scrollbar-thumb {
-  @apply bg-[#d0b48f] rounded-full;
+  background-color: #d0b48f;
+  @apply rounded-full;
 }
 
 /* Form Elements */
-input[type="checkbox"] {
-  @apply rounded border-[#d0b48f] text-[#e3cbaa] focus:ring-[#e3cbaa];
+input[type="checkbox"], select {
+  border-color: #d0b48f;
+  @apply rounded;
 }
 
-select {
-  @apply rounded border-[#d0b48f] focus:ring-[#e3cbaa] focus:border-[#e3cbaa];
+input[type="checkbox"]:checked {
+  background-color: #e3cbaa;
 }
 
+/* Animation */
 @keyframes noise {
   0%, 100% { transform: translate(0,0) }
   10% { transform: translate(-5%,-5%) }
@@ -48,7 +51,7 @@ select {
   left: -500%;
   right: -500%;
   bottom: -500%;
-  background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyBAMAAADsEZWCAAAAGFBMVEUAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAMABA+AAAACHRSTlMzMzMzMzMzM85JBgUAAAABYktHRAH/Ai3eAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAPklEQVQ4y2NgGAWjYBSMglEwCkYBKeBUYmBgWsHA8B8KFBkYtBgY/v+HgkYGhgoGhv//ocCBgYGBYRQMNQAAPn0VK6HhJx8AAAAASUVORK5CYII=');
+  background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyBAMAAADsEZWCAAAAGFBMVEUAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAMABA+AAAACHRSTlMzMzMzMzMzM85JBgUAAAABYktHRAH/Ai3eAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAPklEQVQ4y2NgGAWjYBSMglEwCkYBKeBUYmBgWsHA8B8KFBkYtBgY/v+HgkYGhgoGhv//ocCBgYGBYRQMNQAAPn0VK6HhJx8AAAAASUVORK5CYII=');
   opacity: 0.3;
   animation: noise .2s infinite;
   pointer-events: none;

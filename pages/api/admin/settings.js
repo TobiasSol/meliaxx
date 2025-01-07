@@ -1,75 +1,56 @@
+// pages/api/admin/settings.js
 import { createClient } from '@supabase/supabase-js';
 import { withAuth } from '../../../utils/withAuth';
 
-// Debug-Logs für die Umgebungsvariablen
-console.log('API Route Environment:', {
-  hasUrl: !!process.env.NEXT_PUBLIC_SUPABASE_URL,
-  hasServiceKey: !!process.env.SUPABASE_SERVICE_ROLE_KEY
-});
-
+// Initialisiere Supabase mit Service Role Key
 const supabase = createClient(
   process.env.NEXT_PUBLIC_SUPABASE_URL,
-  process.env.SUPABASE_SERVICE_ROLE_KEY,
-  {
-    auth: {
-      autoRefreshToken: false,
-      persistSession: false
-    },
-    global: {
-      fetch: fetch.bind(globalThis)
-    }
-  }
+  process.env.SUPABASE_SERVICE_ROLE_KEY
 );
 
 async function handler(req, res) {
   try {
-    // Test die Verbindung
-    console.log('Testing Supabase connection...');
-    const { error: testError } = await supabase.auth.getSession();
-    
-    if (testError) {
-      console.error('Connection test failed:', testError);
-      throw testError;
+    // GET Request
+    if (req.method === 'GET') {
+      const { data, error } = await supabase
+        .from('settings')
+        .select('*')
+        .single();
+
+      if (error) throw error;
+
+      return res.status(200).json(data || {
+        passwordprotectionenabled: false,
+        preloaderenabled: true,
+        sitepassword: ''
+      });
     }
 
-    console.log('Connection test successful');
+    // POST Request
+    if (req.method === 'POST') {
+      const settings = req.body;
 
-    switch (req.method) {
-      case 'GET':
-        const { data, error } = await supabase
-          .from('settings')
-          .select('*')
-          .eq('id', 1)
-          .single();
-
-        console.log('Query result:', { data, error });
-
-        if (error) {
-          console.error('Query error:', error);
-          throw error;
-        }
-
-        // Fallback wenn keine Daten
-        const settings = data || {
+      const { data, error } = await supabase
+        .from('settings')
+        .upsert([{
           id: 1,
-          passwordprotectionenabled: false,
-          preloaderenabled: true,
-          sitepassword: ''
-        };
+          ...settings,
+          updated_at: new Date().toISOString()
+        }])
+        .select()
+        .single();
 
-        return res.status(200).json(settings);
+      if (error) throw error;
 
-      // ... rest of the code
+      return res.status(200).json(data);
     }
+
+    return res.status(405).json({ message: 'Methode nicht erlaubt' });
   } catch (error) {
-    console.error('Full error:', error);
+    console.error('API Fehler:', error);
     return res.status(500).json({ 
       message: 'Interner Server Fehler',
-      error: process.env.NODE_ENV === 'development' ? {
-        message: error.message,
-        stack: error.stack,
-        details: error.details
-      } : undefined
+      error: error.message 
     });
   }
 }

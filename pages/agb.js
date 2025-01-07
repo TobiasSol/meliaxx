@@ -15,7 +15,7 @@ export default function AGB() {
             <h2 className="text-2xl font-bold text-[#d0b48f] mb-4">§1 Geltungsbereich</h2>
             <p className="text-white">
               Diese Allgemeinen Geschäftsbedingungen gelten für alle gegenwärtigen und zukünftigen 
-              Geschäftsbeziehungen zwischen Emma X Schwarz (nachfolgend "Anbieter") und dem Kunden 
+              Geschäftsbeziehungen zwischen meliax (nachfolgend "Anbieter") und dem Kunden 
               (nachfolgend "Kunde").
             </p>
           </section>

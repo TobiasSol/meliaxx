@@ -14,7 +14,7 @@ export default function Impressum() {
           <section className="mb-8">
             <h2 className="text-2xl font-bold text-[#d0b48f] mb-4">Angaben gemäß § 5 TMG</h2>
             <p className="text-white">
-              Emma X Schwarz<br />
+              meliax<br />
               Musterstraße 123<br />
               12345 Musterstadt
             </p>
@@ -24,7 +24,7 @@ export default function Impressum() {
             <h2 className="text-2xl font-bold text-[#d0b48f] mb-4">Kontakt</h2>
             <p className="text-white">
               Telefon: +49 (0) 123 456789<br />
-              E-Mail: kontakt@emmaxschwarz.de
+              E-Mail: kontakt@meliax.de
             </p>
           </section>
 

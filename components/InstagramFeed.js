@@ -5,7 +5,7 @@ export default function InstagramFeed() {
     '/videos/img1.png',
     '/videos/img2.png',
     '/videos/img4.png',
-    '/videos/img5.png',
+    '/videos/img3.png',
     '/videos/img6.png',
     '/videos/img7.png'
   ];

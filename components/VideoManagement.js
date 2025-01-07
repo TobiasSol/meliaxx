@@ -5,7 +5,12 @@ import { Trash2, Edit, PlayCircle, Upload } from 'lucide-react';
 // Client-side Supabase instance mit ANON key
 const supabase = createClient(
   process.env.NEXT_PUBLIC_SUPABASE_URL,
-  process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY
+  process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY,
+  {
+    global: {
+      fetch: fetch.bind(globalThis)
+    }
+  }
 );
 
 export default function VideoManagement() {

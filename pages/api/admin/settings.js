@@ -1,6 +1,12 @@
 import { createClient } from '@supabase/supabase-js';
 import { withAuth } from '../../../utils/withAuth';
 
+// Debug-Logs für die Umgebungsvariablen
+console.log('API Route Environment:', {
+  hasUrl: !!process.env.NEXT_PUBLIC_SUPABASE_URL,
+  hasServiceKey: !!process.env.SUPABASE_SERVICE_ROLE_KEY
+});
+
 const supabase = createClient(
   process.env.NEXT_PUBLIC_SUPABASE_URL,
   process.env.SUPABASE_SERVICE_ROLE_KEY,
@@ -9,56 +15,61 @@ const supabase = createClient(
       autoRefreshToken: false,
       persistSession: false
     },
-    db: {
-      schema: 'public'
-    },
     global: {
-      headers: { 
-        'X-My-Custom-Header': 'my-app-name',
-      },
+      fetch: fetch.bind(globalThis)
     }
   }
 );
 
 async function handler(req, res) {
-  console.log('Settings API called');
-  console.log('Using Supabase URL:', process.env.NEXT_PUBLIC_SUPABASE_URL);
-  console.log('Service Role Key available:', !!process.env.SUPABASE_SERVICE_ROLE_KEY);
-
   try {
-    // Test connection first
-    const { data: testData, error: testError } = await supabase
-      .from('settings')
-      .select('count')
-      .single();
-      
+    // Test die Verbindung
+    console.log('Testing Supabase connection...');
+    const { error: testError } = await supabase.auth.getSession();
+    
     if (testError) {
       console.error('Connection test failed:', testError);
       throw testError;
     }
 
-    const { data, error } = await supabase
-      .from('settings')
-      .select('*')
-      .eq('id', 1)
-      .single();
+    console.log('Connection test successful');
 
-    console.log('Query result:', { data, error });
+    switch (req.method) {
+      case 'GET':
+        const { data, error } = await supabase
+          .from('settings')
+          .select('*')
+          .eq('id', 1)
+          .single();
 
-    if (error) throw error;
+        console.log('Query result:', { data, error });
 
-    return res.status(200).json(data || {
-      id: 1,
-      passwordprotectionenabled: false,
-      preloaderenabled: true,
-      sitepassword: ''
-    });
+        if (error) {
+          console.error('Query error:', error);
+          throw error;
+        }
 
+        // Fallback wenn keine Daten
+        const settings = data || {
+          id: 1,
+          passwordprotectionenabled: false,
+          preloaderenabled: true,
+          sitepassword: ''
+        };
+
+        return res.status(200).json(settings);
+
+      // ... rest of the code
+    }
   } catch (error) {
-    console.error('Handler error:', error);
+    console.error('Full error:', error);
     return res.status(500).json({ 
       message: 'Interner Server Fehler',
-      error: process.env.NODE_ENV === 'development' ? error.message : undefined
+      error: process.env.NODE_ENV === 'development' ? {
+        message: error.message,
+        stack: error.stack,
+        details: error.details
+      } : undefined
     });
   }
 }

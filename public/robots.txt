@@ -1,0 +1,10 @@
+User-agent: *
+Allow: /
+Allow: /sitemap.xml
+
+# Admin Bereich von Crawlern ausschließen
+Disallow: /admin/
+Disallow: /api/
+
+# Sitemaps
+Sitemap: https://meliaxx.de/sitemap.xml

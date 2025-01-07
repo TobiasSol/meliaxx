@@ -44,7 +44,7 @@ export default function Footer() {
             <h3 className="text-xl font-bold text-[#e3cbaa] mb-4">Social Media</h3>
             <div className="flex space-x-4">
               <a
-                href="https://instagram.com"
+                href="https://www.instagram.com/me.lia.x/"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-[#d0b48f] hover:text-[#e3cbaa]"
@@ -60,7 +60,7 @@ export default function Footer() {
                 <Twitch size={24} />
               </a>
               <a
-                href="https://twitter.com"
+                href="https://x.com/me_lia_x"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-[#d0b48f] hover:text-[#e3cbaa]"

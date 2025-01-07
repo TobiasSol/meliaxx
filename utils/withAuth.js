@@ -3,8 +3,8 @@ import { verify } from 'jsonwebtoken';
 
 export function withAuth(handler) {
   return async (req, res) => {
-    // GET requests erlauben
-    if (req.method === 'GET') {
+    // GET requests erlauben für Entwicklung
+    if (process.env.NODE_ENV === 'development' && req.method === 'GET') {
       return handler(req, res);
     }
 

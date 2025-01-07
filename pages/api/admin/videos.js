@@ -8,6 +8,8 @@ const supabase = createClient(
 );
 
 async function handler(req, res) {
+  console.log('Supabase URL:', process.env.NEXT_PUBLIC_SUPABASE_URL);
+
   try {
     switch (req.method) {
       case 'GET':

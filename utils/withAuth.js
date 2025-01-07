@@ -1,23 +1,21 @@
-// utils/withAuth.js
 import { verify } from 'jsonwebtoken';
 
 export function withAuth(handler) {
   return async (req, res) => {
-    // GET requests erlauben für Entwicklung
-    if (process.env.NODE_ENV === 'development' && req.method === 'GET') {
-      return handler(req, res);
-    }
-
     try {
+      // Debug-Logs
+      console.log('Checking authorization header:', req.headers.authorization);
+      
       const token = req.headers.authorization?.split(' ')[1];
       
       if (!token) {
-        return res.status(401).json({ message: 'Nicht autorisiert' });
+        return res.status(401).json({ message: 'Token fehlt' });
       }
 
       const decoded = verify(token, process.env.JWT_SECRET);
-      req.user = decoded;
+      console.log('Decoded token:', decoded);
       
+      req.user = decoded;
       return handler(req, res);
     } catch (error) {
       console.error('Auth Error:', error);

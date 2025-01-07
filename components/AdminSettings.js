@@ -31,6 +31,7 @@ export default function AdminSettings() {
  const fetchSettings = async () => {
   try {
     const token = localStorage.getItem('adminToken');
+    console.log('Using token:', token); // Debug-Log
     
     if (!token) {
       throw new Error('Nicht eingeloggt');
@@ -41,6 +42,8 @@ export default function AdminSettings() {
         'Authorization': `Bearer ${token}`
       }
     });
+    
+    console.log('Response status:', response.status); // Debug-Log
     const data = await response.json();
 
     if (response.ok) {
@@ -54,8 +57,6 @@ export default function AdminSettings() {
       type: 'error',
       message: error.message || 'Fehler beim Laden der Einstellungen'
     });
-  } finally {
-    setIsLoading(false);
   }
 };
 

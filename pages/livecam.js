@@ -35,7 +35,7 @@ export default function LiveCam() {
           <h2 className="text-4xl font-bold text-[#e3cbaa] mb-8">
             Live Cam Preisrechner
           </h2>
-          <LiveCamCalculator />
+         
         </section>
       </main>
 

@@ -1,5 +1,7 @@
-import Head from 'next/head'
 import '../styles/globals.css';
+import Head from 'next/head';
+import FontProvider from '../components/FontProvider';
+import AgeVerificationPreloader from '../components/AgeVerificationPreloader';
 
 function MyApp({ Component, pageProps }) {
   return (
@@ -7,9 +9,12 @@ function MyApp({ Component, pageProps }) {
       <Head>
         <meta name="viewport" content="width=device-width, initial-scale=1" />
       </Head>
-      <Component {...pageProps} />
+      <FontProvider>
+        <AgeVerificationPreloader />
+        <Component {...pageProps} />
+      </FontProvider>
     </>
-  )
+  );
 }
 
 export default MyApp;

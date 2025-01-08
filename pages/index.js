@@ -122,7 +122,7 @@ export default function Home() {
         "name": "Meliax",
         "url": "https://meliaxx.de",
         "image": "https://meliaxx.de/videos/meliax.avif",
-        "description": "Content Creator & Digital Artist",
+        "description": "Sexy Content Creator & Porn Artist",
         "sameAs": [
           "https://meliaxx.de",
           "https://www.instagram.com/me.lia.x",
@@ -157,13 +157,13 @@ export default function Home() {
               }}
             />
             <div className="relative z-10 h-full flex flex-col items-center justify-center">
-              <h1 className="text-4xl md:text-6xl font-evogria text-[#e3cbaa] mb-4">
+              <h1 className="text-5xl md:text-7xl font-evogria text-[#e3cbaa] mb-4">
                 MELIAX
               </h1>
-              <p className="text-xl font-coterie text-[#d0b48f] mb-4">
-                Content Creator & Digital Artist
+              <p className="text-2xl font-coterie text-[#d0b48f] mb-4">
+                Sexy Content Creator & Porn Artist
               </p>
-              <p className="text-lg text-white/80 max-w-2xl mx-auto px-4">
+              <p className="text-xl text-white/80 max-w-2xl mx-auto px-4">
                 Willkommen in meiner kreativen Welt! Als Meliax erschaffe ich einzigartige digitale Inhalte und Kunst, die Sie nur hier finden.
               </p>
             </div>
@@ -171,7 +171,7 @@ export default function Home() {
 
           {/* Video Section */}
           <section className="mb-28 text-center" id="videos">
-            <h2 className="text-3xl font-bold text-[#e3cbaa] mb-8">
+            <h2 className="text-4xl font-bold text-[#e3cbaa] mb-8">
               Meine Videos
             </h2>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
@@ -190,10 +190,10 @@ export default function Home() {
                   </div>
                   
                   <div className="p-6">
-                    <h3 className="text-[#e3cbaa] text-xl font-bold mb-2">
+                    <h3 className="text-[#e3cbaa] text-2xl font-bold mb-2">
                       {video.title}
                     </h3>
-                    <p className="text-gray-300 mb-4">
+                    <p className="text-gray-300 text-lg mb-4">
                       {video.description}
                     </p>
                     <div className="flex justify-between items-center gap-4">

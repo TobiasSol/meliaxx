@@ -16,12 +16,6 @@ export default function Document() {
         <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
         <link rel="manifest" href="/site.webmanifest" />
         
-        {/* Fonts */}
-        <link 
-          href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&display=swap" 
-          rel="stylesheet" 
-        />
-        
         {/* Open Graph Tags */}
         <meta property="og:site_name" content="Meliax" />
         <meta property="og:type" content="website" />
@@ -29,6 +23,12 @@ export default function Document() {
         {/* Twitter Card Tags */}
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:site" content="@meliax" />
+        
+        {/* Google Fonts */}
+        <link
+          href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+          rel="stylesheet"
+        />
       </Head>
       <body className="bg-black text-white">
         <Main />

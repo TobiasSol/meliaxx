@@ -43,8 +43,8 @@ export default function Header() {
     <header className="bg-black fixed top-0 left-0 right-0 z-50 animate-fadeIn">
       <nav className="container mx-auto px-4 py-4">
         <div className="flex justify-between items-center">
-          <Link href="/" className="text-xl font-coterie text-[#e3cbaa]">
-          Meliax
+          <Link href="/" className="text-3xl font-coterie text-[#e3cbaa]">
+          MELIAX
           </Link>
           
           {/* Hamburger Menu Button */}
@@ -67,17 +67,17 @@ export default function Header() {
               <div className="flex items-center space-x-4">
                 <Link 
                   href="https://www.twitch.tv"
-                  className="text-base px-4 py-1.5 bg-green-500/10 rounded-lg border border-green-400/50 
+                  className="text-lg px-4 py-1.5 bg-green-500/10 rounded-lg border border-green-400/50 
                            text-green-400 font-medium hover:bg-green-500/20 transition-all duration-300"
                 >
-                  Live Chat mit Meliax
+                  LIVE CHAT MIT MELIAX
                 </Link>
                 <Link 
                   href="https://www.twitch.tv/"
-                  className="text-base px-4 py-1.5 bg-green-500/10 rounded-lg border border-green-400/50 
+                  className="text-lg px-4 py-1.5 bg-green-500/10 rounded-lg border border-green-400/50 
                            text-green-400 font-medium hover:bg-green-500/20 transition-all duration-300"
                 >
-                  Live auf Twitch
+                  LIVE AUF TWITCH
                 </Link>
               </div>
             )}
@@ -85,50 +85,47 @@ export default function Header() {
             <div className="flex items-center space-x-4">
               <Link 
                 href="/livecam" 
-                className="text-lg font-medium text-[#d0b48f] hover:text-[#e3cbaa] transition-all duration-300
+                className="text-xl font-medium text-[#d0b48f] hover:text-[#e3cbaa] transition-all duration-300
                            hover:scale-110 hover:shadow-lg hover:shadow-[#e3cbaa]/20 
                            px-3 py-1 rounded-lg hover:bg-[#e3cbaa]/5"
               >
-                Livecam
+                LIVECAM
               </Link>
               <Link 
                 href="#calculator" 
-                className="text-lg font-medium text-[#d0b48f] hover:text-[#e3cbaa] transition-all duration-300
+                className="text-xl font-medium text-[#d0b48f] hover:text-[#e3cbaa] transition-all duration-300
                            hover:scale-110 hover:shadow-lg hover:shadow-[#e3cbaa]/20 
                            px-3 py-1 rounded-lg hover:bg-[#e3cbaa]/5"
               >
-                Custom Content
-                </Link>
-
-              
-
+                CUSTOM CONTENT
+              </Link>
               <Link 
                 href="#videos" 
-                className="text-lg font-medium text-[#d0b48f] hover:text-[#e3cbaa] transition-all duration-300
+                className="text-xl font-medium text-[#d0b48f] hover:text-[#e3cbaa] transition-all duration-300
                            hover:scale-110 hover:shadow-lg hover:shadow-[#e3cbaa]/20 
                            px-3 py-1 rounded-lg hover:bg-[#e3cbaa]/5"
               >
-                Videos
+                VIDEOS
               </Link>
               <Link 
                 href="#shop" 
-                className="text-lg font-medium text-[#d0b48f] hover:text-[#e3cbaa] transition-all duration-300
+                className="text-xl font-medium text-[#d0b48f] hover:text-[#e3cbaa] transition-all duration-300
                            hover:scale-110 hover:shadow-lg hover:shadow-[#e3cbaa]/20 
                            px-3 py-1 rounded-lg hover:bg-[#e3cbaa]/5"
               >
-                Shop
+                SHOP
               </Link>
               <Link 
                 href="#wishlist" 
-                className="text-lg font-medium text-[#d0b48f] hover:text-[#e3cbaa] transition-all duration-300
+                className="text-xl font-medium text-[#d0b48f] hover:text-[#e3cbaa] transition-all duration-300
                            hover:scale-110 hover:shadow-lg hover:shadow-[#e3cbaa]/20 
                            px-3 py-1 rounded-lg hover:bg-[#e3cbaa]/5"
               >
-                Wishlist
+                WISHLIST
               </Link>
               <Link 
                 href="https://www.twitch.tv" 
-                className="text-lg font-medium text-[#d0b48f] hover:text-[#e3cbaa] transition-all duration-300
+                className="text-xl font-medium text-[#d0b48f] hover:text-[#e3cbaa] transition-all duration-300
                            hover:scale-110 hover:shadow-lg hover:shadow-[#e3cbaa]/20 
                            px-3 py-1 rounded-lg hover:bg-[#e3cbaa]/5 flex items-center gap-2"
               >
@@ -137,7 +134,7 @@ export default function Header() {
               </Link>
               <Link 
                 href="https://x.com/me_lia_x" 
-                className="text-lg font-medium text-[#d0b48f] hover:text-[#e3cbaa] transition-all duration-300
+                className="text-xl font-medium text-[#d0b48f] hover:text-[#e3cbaa] transition-all duration-300
                            hover:scale-110 hover:shadow-lg hover:shadow-[#e3cbaa]/20 
                            px-3 py-1 rounded-lg hover:bg-[#e3cbaa]/5 flex items-center gap-2"
               >
@@ -146,7 +143,7 @@ export default function Header() {
               </Link>
               <Link 
                 href="https://www.instagram.com/me.lia.x" 
-                className="text-lg font-medium text-[#d0b48f] hover:text-[#e3cbaa] transition-all duration-300
+                className="text-xl font-medium text-[#d0b48f] hover:text-[#e3cbaa] transition-all duration-300
                            hover:scale-110 hover:shadow-lg hover:shadow-[#e3cbaa]/20 
                            px-3 py-1 rounded-lg hover:bg-[#e3cbaa]/5 flex items-center gap-2"
               >
@@ -168,91 +165,26 @@ export default function Header() {
                     className="text-base text-center px-4 py-1.5 bg-green-500/10 rounded-lg border border-green-400/50 
                              text-green-400 font-medium hover:bg-green-500/20 transition-all duration-300"
                   >
-                    Live Chat mit Emma
+                    LIVE CHAT MIT MELIAX
                   </Link>
                   <Link 
                     href="https://www.twitch.tv/"
                     className="text-base text-center px-4 py-1.5 bg-red-500/10 rounded-lg border border-red-400/50 
                              text-red-400 font-medium hover:bg-red-500/20 transition-all duration-300"
                   >
-                    Live auf Twitch
+                    LIVE AUF TWITCH
                   </Link>
                 </>
               )}
               
-              <Link 
-                href="/livecam" 
-                className="text-lg font-medium text-[#d0b48f] hover:text-[#e3cbaa] transition-all duration-300
-                           hover:scale-105 hover:shadow-lg hover:shadow-[#e3cbaa]/20
-                           px-3 py-2 rounded-lg hover:bg-[#e3cbaa]/5 text-center"
-              >
-                Livecam
-              </Link>
-              <Link 
-                href="#calculator" 
-                className="text-lg font-medium text-[#d0b48f] hover:text-[#e3cbaa] transition-all duration-300
-                           hover:scale-105 hover:shadow-lg hover:shadow-[#e3cbaa]/20
-                           px-3 py-2 rounded-lg hover:bg-[#e3cbaa]/5 text-center"
-              >
-                Custom Content
-              </Link>
-
-
-              <Link 
-                href="#videos" 
-                className="text-lg font-medium text-[#d0b48f] hover:text-[#e3cbaa] transition-all duration-300
-                           hover:scale-105 hover:shadow-lg hover:shadow-[#e3cbaa]/20
-                           px-3 py-2 rounded-lg hover:bg-[#e3cbaa]/5 text-center"
-              >
-                Meine Videos
-              </Link>
-              <Link 
-                href="#shop" 
-                className="text-lg font-medium text-[#d0b48f] hover:text-[#e3cbaa] transition-all duration-300
-                           hover:scale-105 hover:shadow-lg hover:shadow-[#e3cbaa]/20
-                           px-3 py-2 rounded-lg hover:bg-[#e3cbaa]/5 text-center"
-              >
-                Shop
-              </Link>
-              <Link 
-                href="#wishlist" 
-                className="text-lg font-medium text-[#d0b48f] hover:text-[#e3cbaa] transition-all duration-300
-                           hover:scale-105 hover:shadow-lg hover:shadow-[#e3cbaa]/20
-                           px-3 py-2 rounded-lg hover:bg-[#e3cbaa]/5 text-center"
-              >
-                Wishlist
-              </Link>
-
-
-              <Link 
-                href="https://www.twitch.tv/" 
-                className="text-lg font-medium text-[#d0b48f] hover:text-[#e3cbaa] transition-all duration-300
-                           hover:scale-105 hover:shadow-lg hover:shadow-[#e3cbaa]/20
-                           px-3 py-2 rounded-lg hover:bg-[#e3cbaa]/5 text-center flex items-center justify-center gap-2"
-              >
-                <FaTwitch size={20} />
-                Twitch
-              </Link>
-              <Link 
-                href="https://twitter.com/" 
-                className="text-lg font-medium text-[#d0b48f] hover:text-[#e3cbaa] transition-all duration-300
-                           hover:scale-105 hover:shadow-lg hover:shadow-[#e3cbaa]/20
-                           px-3 py-2 rounded-lg hover:bg-[#e3cbaa]/5 text-center flex items-center justify-center gap-2"
-              >
-                <FaTwitter size={20} />
-                Twitter
-              </Link>
-              <Link 
-                href="https://www.instagram.com/me.lia.x" 
-                className="text-lg font-medium text-[#d0b48f] hover:text-[#e3cbaa] transition-all duration-300
-                           hover:scale-105 hover:shadow-lg hover:shadow-[#e3cbaa]/20
-                           px-3 py-2 rounded-lg hover:bg-[#e3cbaa]/5 text-center flex items-center justify-center gap-2"
-              >
-                <FaInstagram size={20} />
-                Instagram
-              </Link>
-
-
+              <Link href="/livecam">LIVECAM</Link>
+              <Link href="#calculator">CUSTOM CONTENT</Link>
+              <Link href="#videos">VIDEOS</Link>
+              <Link href="#shop">SHOP</Link>
+              <Link href="#wishlist">WISHLIST</Link>
+              <Link href="https://www.twitch.tv/">TWITCH</Link>
+              <Link href="https://twitter.com/">TWITTER</Link>
+              <Link href="https://www.instagram.com/me.lia.x">INSTAGRAM</Link>
             </div>
           </div>
         )}

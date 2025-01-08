@@ -18,10 +18,10 @@ export default function LiveCam() {
             {/* Offline Message */}
             <div className="absolute inset-0 flex items-center justify-center">
               <div className="text-center">
-                <h2 className="text-2xl font-bold text-[#e3cbaa] mb-4">
+                <h2 className="text-3xl font-bold text-[#e3cbaa] mb-4">
                   Offline
                 </h2>
-                <p className="text-[#d0b48f]">
+                <p className="text-xl text-[#d0b48f]">
                   Buche jetzt deine private Show
                 </p>
               </div>
@@ -31,7 +31,7 @@ export default function LiveCam() {
 
         {/* Calculator Section */}
         <section className="mb-20 pt-8 mx-auto text-center">
-          <h2 className="text-3xl font-bold text-[#e3cbaa] mb-8">
+          <h2 className="text-4xl font-bold text-[#e3cbaa] mb-8">
             Live Cam Preisrechner
           </h2>
           <LiveCamCalculator />

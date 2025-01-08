@@ -4,8 +4,16 @@ import Footer from '../components/Footer'
 import Image from 'next/image'
 import styles from '../styles/Portfolio.module.css'
 import ChatPopup from '../components/ChatPopup'
+import AgeVerificationPreloader from '../components/AgeVerificationPreloader'
+import { useState, useEffect } from 'react'
 
 export default function MeliaxNude() {
+  const [audioAllowed, setAudioAllowed] = useState(false);
+
+  const handleAgeVerified = () => {
+    setAudioAllowed(true);
+  };
+
   const galleryImages = [
     {
       src: '/image/porn1 (1).jpg',
@@ -132,7 +140,8 @@ export default function MeliaxNude() {
       </main>
 
       <Footer />
-      <ChatPopup />
+      <ChatPopup audioEnabled={audioAllowed} />
+      <AgeVerificationPreloader onVerified={handleAgeVerified} />
     </div>
   )
 }

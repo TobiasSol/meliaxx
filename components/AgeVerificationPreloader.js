@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useRouter } from 'next/router';
 
-export default function AgeVerificationPreloader() {
+export default function AgeVerificationPreloader({ onVerified }) {
   const [verified, setVerified] = useState(false);
   const [loading, setLoading] = useState(true);
   const router = useRouter();
@@ -19,6 +19,7 @@ export default function AgeVerificationPreloader() {
     if (isOver18) {
       localStorage.setItem('age_verified', 'true');
       setVerified(true);
+      if (onVerified) onVerified();
     } else {
       // Redirect to Google if under 18
       window.location.href = 'https://www.google.com';

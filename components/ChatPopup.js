@@ -1,22 +1,39 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import Image from 'next/image'
 import styles from '../styles/ChatPopup.module.css'
 
-export default function ChatPopup() {
+export default function ChatPopup({ audioEnabled = false }) {
   const [isVisible, setIsVisible] = useState(false)
   const [messages, setMessages] = useState([])
   const [userInput, setUserInput] = useState('')
   const [hasUserReplied, setHasUserReplied] = useState(false)
   const [isTyping, setIsTyping] = useState(false)
 
+  const popupSound = useRef(null);
+  const messageSound = useRef(null);
+
+  // Initialisiere Audio-Objekte nach dem Mount
   useEffect(() => {
-    // Popup nach 5 Sekunden anzeigen
+    if (typeof window !== 'undefined') {
+      popupSound.current = new Audio('/notification-18-270129.mp3');
+      messageSound.current = new Audio('/notification-18-270129.mp3');
+      
+      // Lautstärke einstellen
+      popupSound.current.volume = 0.5;
+      messageSound.current.volume = 0.3;
+    }
+  }, []);
+
+  useEffect(() => {
     const timer = setTimeout(() => {
       setIsVisible(true)
-      // Zeige "schreibt..." für 4 Sekunden
+      // Popup Sound abspielen wenn Audio erlaubt
+      if (audioEnabled && popupSound.current) {
+        popupSound.current.play().catch(err => console.log('Audio play failed:', err));
+      }
+      
       setIsTyping(true)
       
-      // Nach 4 Sekunden erste Nachricht anzeigen
       setTimeout(() => {
         setIsTyping(false)
         setMessages([{
@@ -24,11 +41,25 @@ export default function ChatPopup() {
           text: 'Hallo na wie geht es dir?',
           time: new Date().toLocaleTimeString()
         }])
+        // Nachrichtenton abspielen
+        if (audioEnabled && messageSound.current) {
+          messageSound.current.play().catch(err => console.log('Audio play failed:', err));
+        }
       }, 4000)
     }, 5000)
 
     return () => clearTimeout(timer)
-  }, [])
+  }, [audioEnabled])
+
+  // Nachrichtenton bei Meliax Antworten
+  useEffect(() => {
+    if (messages.length > 0 && 
+        messages[messages.length-1].sender === 'Meliax' && 
+        audioEnabled && 
+        messageSound.current) {
+      messageSound.current.play().catch(err => console.log('Audio play failed:', err));
+    }
+  }, [messages, audioEnabled])
 
   const handleSubmit = (e) => {
     e.preventDefault()
@@ -44,18 +75,21 @@ export default function ChatPopup() {
 
     // Meliax antwortet nach Benutzereingabe
     if (!hasUserReplied) {
-      // Zeige "schreibt..." für 4 Sekunden
-      setIsTyping(true)
-      
+      // Warte 2 Sekunden bevor "schreibt..." erscheint
       setTimeout(() => {
-        setIsTyping(false)
-        setMessages(prev => [...prev, {
-          sender: 'Meliax',
-          text: 'Komm in mein livechat hab bock auf was dreckiges 😈',
-          time: new Date().toLocaleTimeString()
-        }])
-        setHasUserReplied(true)
-      }, 4000)
+        setIsTyping(true)
+        
+        // Nach weiteren 4 Sekunden die Antwort anzeigen
+        setTimeout(() => {
+          setIsTyping(false)
+          setMessages(prev => [...prev, {
+            sender: 'Meliax',
+            text: 'Komm in mein livechat hab bock auf was dreckiges 😈',
+            time: new Date().toLocaleTimeString()
+          }])
+          setHasUserReplied(true)
+        }, 4000)
+      }, 2000)
     }
   }
 

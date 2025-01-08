@@ -1,7 +1,7 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { loadStripe } from "@stripe/stripe-js";
 
-const stripePromise = loadStripe(process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY);
+const stripePromise = loadStripe(process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY || '');
 
 export default function LiveCamCalculator() {
   const [duration, setDuration] = useState(10);
@@ -10,6 +10,12 @@ export default function LiveCamCalculator() {
   const [language, setLanguage] = useState('Deutsch');
   const [showType, setShowType] = useState('Standard');
   const [appreciation, setAppreciation] = useState('');
+
+  useEffect(() => {
+    if (!process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY) {
+      console.warn('Stripe Publishable Key ist nicht definiert');
+    }
+  }, []);
 
   const calculatePrice = () => {
     let basePrice;

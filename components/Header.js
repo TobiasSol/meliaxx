@@ -62,93 +62,84 @@ export default function Header() {
           </button>
 
           {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center space-x-6">
+          <div className="hidden md:flex items-center space-x-2 lg:space-x-4 xl:space-x-6">
             {showChatButton && (
-              <div className="flex items-center space-x-4">
+              <div className="flex items-center space-x-2 lg:space-x-4">
                 <Link 
                   href="https://www.twitch.tv"
-                  className="text-lg px-4 py-1.5 bg-green-500/10 rounded-lg border border-green-400/50 
+                  className="text-sm lg:text-base xl:text-lg px-2 lg:px-4 py-1.5 bg-green-500/10 rounded-lg border border-green-400/50 
                            text-green-400 font-medium hover:bg-green-500/20 transition-all duration-300"
                 >
-                  LIVE CHAT MIT MELIAX
+                  LIVECHAT 
                 </Link>
-                <Link 
-                  href="https://www.twitch.tv/"
-                  className="text-lg px-4 py-1.5 bg-green-500/10 rounded-lg border border-green-400/50 
-                           text-green-400 font-medium hover:bg-green-500/20 transition-all duration-300"
-                >
-                  LIVE AUF TWITCH
-                </Link>
+               
               </div>
             )}
             
-            <div className="flex items-center space-x-4">
+            <div className="flex items-center space-x-2 lg:space-x-3 xl:space-x-4">
               <Link 
                 href="/livecam" 
-                className="text-xl font-playfair text-[#d0b48f] hover:text-[#e3cbaa] transition-all duration-300
+                className="text-sm lg:text-base xl:text-xl font-playfair text-[#d0b48f] hover:text-[#e3cbaa] transition-all duration-300
                            hover:scale-110 hover:shadow-lg hover:shadow-[#e3cbaa]/20 
-                           px-3 py-1 rounded-lg hover:bg-[#e3cbaa]/5"
+                           px-2 lg:px-3 py-1 rounded-lg hover:bg-[#e3cbaa]/5"
               >
                 LIVECAM
               </Link>
               <Link 
-                href="#calculator" 
-                className="text-xl font-playfair text-[#d0b48f] hover:text-[#e3cbaa] transition-all duration-300
+                href="/#calculator" 
+                className="text-sm lg:text-base xl:text-xl font-playfair text-[#d0b48f] hover:text-[#e3cbaa] transition-all duration-300
                            hover:scale-110 hover:shadow-lg hover:shadow-[#e3cbaa]/20 
-                           px-3 py-1 rounded-lg hover:bg-[#e3cbaa]/5"
+                           px-2 lg:px-3 py-1 rounded-lg hover:bg-[#e3cbaa]/5"
               >
                 CUSTOM CONTENT
               </Link>
               <Link 
-                href="#videos" 
-                className="text-xl font-playfair text-[#d0b48f] hover:text-[#e3cbaa] transition-all duration-300
+                href="/#videos" 
+                className="text-sm lg:text-base xl:text-xl font-playfair text-[#d0b48f] hover:text-[#e3cbaa] transition-all duration-300
                            hover:scale-110 hover:shadow-lg hover:shadow-[#e3cbaa]/20 
-                           px-3 py-1 rounded-lg hover:bg-[#e3cbaa]/5"
+                           px-2 lg:px-3 py-1 rounded-lg hover:bg-[#e3cbaa]/5"
               >
                 VIDEOS
               </Link>
               <Link 
-                href="#shop" 
-                className="text-xl font-playfair text-[#d0b48f] hover:text-[#e3cbaa] transition-all duration-300
+                href="/#shop" 
+                className="text-sm lg:text-base xl:text-xl font-playfair text-[#d0b48f] hover:text-[#e3cbaa] transition-all duration-300
                            hover:scale-110 hover:shadow-lg hover:shadow-[#e3cbaa]/20 
-                           px-3 py-1 rounded-lg hover:bg-[#e3cbaa]/5"
+                           px-2 lg:px-3 py-1 rounded-lg hover:bg-[#e3cbaa]/5"
               >
                 SHOP
               </Link>
               <Link 
-                href="#wishlist" 
-                className="text-xl font-playfair text-[#d0b48f] hover:text-[#e3cbaa] transition-all duration-300
+                href="/#wishlist" 
+                className="text-sm lg:text-base xl:text-xl font-playfair text-[#d0b48f] hover:text-[#e3cbaa] transition-all duration-300
                            hover:scale-110 hover:shadow-lg hover:shadow-[#e3cbaa]/20 
-                           px-3 py-1 rounded-lg hover:bg-[#e3cbaa]/5"
+                           px-2 lg:px-3 py-1 rounded-lg hover:bg-[#e3cbaa]/5"
               >
                 WISHLIST
               </Link>
               <Link 
                 href="https://www.twitch.tv" 
-                className="text-xl font-playfair text-[#d0b48f] hover:text-[#e3cbaa] transition-all duration-300
+                className="text-sm lg:text-base xl:text-xl font-playfair text-[#d0b48f] hover:text-[#e3cbaa] transition-all duration-300
                            hover:scale-110 hover:shadow-lg hover:shadow-[#e3cbaa]/20 
-                           px-3 py-1 rounded-lg hover:bg-[#e3cbaa]/5 flex items-center gap-2"
+                           px-2 lg:px-3 py-1 rounded-lg hover:bg-[#e3cbaa]/5 flex items-center gap-1 lg:gap-2"
               >
-                <FaTwitch size={20} />
-       
+                <FaTwitch className="w-4 h-4 lg:w-5 lg:h-5" />
               </Link>
               <Link 
                 href="https://x.com/me_lia_x" 
-                className="text-xl font-playfair text-[#d0b48f] hover:text-[#e3cbaa] transition-all duration-300
+                className="text-sm lg:text-base xl:text-xl font-playfair text-[#d0b48f] hover:text-[#e3cbaa] transition-all duration-300
                            hover:scale-110 hover:shadow-lg hover:shadow-[#e3cbaa]/20 
-                           px-3 py-1 rounded-lg hover:bg-[#e3cbaa]/5 flex items-center gap-2"
+                           px-2 lg:px-3 py-1 rounded-lg hover:bg-[#e3cbaa]/5 flex items-center gap-1 lg:gap-2"
               >
-                <FaTwitter size={20} />
-              
+                <FaTwitter className="w-4 h-4 lg:w-5 lg:h-5" />
               </Link>
               <Link 
                 href="https://www.instagram.com/me.lia.x" 
-                className="text-xl font-playfair text-[#d0b48f] hover:text-[#e3cbaa] transition-all duration-300
+                className="text-sm lg:text-base xl:text-xl font-playfair text-[#d0b48f] hover:text-[#e3cbaa] transition-all duration-300
                            hover:scale-110 hover:shadow-lg hover:shadow-[#e3cbaa]/20 
-                           px-3 py-1 rounded-lg hover:bg-[#e3cbaa]/5 flex items-center gap-2"
+                           px-2 lg:px-3 py-1 rounded-lg hover:bg-[#e3cbaa]/5 flex items-center gap-1 lg:gap-2"
               >
-                <FaInstagram size={20} />
-            
+                <FaInstagram className="w-4 h-4 lg:w-5 lg:h-5" />
               </Link>
             </div>
           </div>
@@ -178,10 +169,10 @@ export default function Header() {
               )}
               
               <Link href="/livecam">LIVECAM</Link>
-              <Link href="#calculator">CUSTOM CONTENT</Link>
-              <Link href="#videos">VIDEOS</Link>
-              <Link href="#shop">SHOP</Link>
-              <Link href="#wishlist">WISHLIST</Link>
+              <Link href="/#calculator">CUSTOM CONTENT</Link>
+              <Link href="/#videos">VIDEOS</Link>
+              <Link href="/#shop">SHOP</Link>
+              <Link href="/#wishlist">WISHLIST</Link>
               <Link href="https://www.twitch.tv/">TWITCH</Link>
               <Link href="https://twitter.com/">TWITTER</Link>
               <Link href="https://www.instagram.com/me.lia.x">INSTAGRAM</Link>

@@ -2,6 +2,14 @@ User-agent: *
 Allow: /
 Allow: /sitemap.xml
 
+# Hauptseiten
+Allow: /livecam
+Allow: /meliax-cam
+Allow: /meliax-porn
+Allow: /meliax-onlyfans
+Allow: /meliax-stripchat
+Allow: /meliax-nude
+
 # Admin Bereich von Crawlern ausschließen
 Disallow: /admin/
 Disallow: /api/

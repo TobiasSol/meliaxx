@@ -8,26 +8,39 @@ export default function ChatPopup({ audioEnabled = false }) {
   const [userInput, setUserInput] = useState('')
   const [hasUserReplied, setHasUserReplied] = useState(false)
   const [isTyping, setIsTyping] = useState(false)
+  const [pageLoaded, setPageLoaded] = useState(false)
 
   const popupSound = useRef(null);
   const messageSound = useRef(null);
 
-  // Initialisiere Audio-Objekte nach dem Mount
+  // Seiten-Load-Status überprüfen
+  useEffect(() => {
+    if (typeof window !== 'undefined') {
+      if (document.readyState === 'complete') {
+        setPageLoaded(true);
+      } else {
+        window.addEventListener('load', () => setPageLoaded(true));
+      }
+    }
+  }, []);
+
+  // Audio-Objekte initialisieren
   useEffect(() => {
     if (typeof window !== 'undefined') {
       popupSound.current = new Audio('/notification-18-270129.mp3');
       messageSound.current = new Audio('/notification-18-270129.mp3');
       
-      // Lautstärke einstellen
       popupSound.current.volume = 0.5;
       messageSound.current.volume = 0.3;
     }
   }, []);
 
+  // Popup-Timer starten erst nach Seitenladen
   useEffect(() => {
+    if (!pageLoaded) return;
+
     const timer = setTimeout(() => {
       setIsVisible(true)
-      // Popup Sound abspielen wenn Audio erlaubt
       if (audioEnabled && popupSound.current) {
         popupSound.current.play().catch(err => console.log('Audio play failed:', err));
       }
@@ -41,7 +54,6 @@ export default function ChatPopup({ audioEnabled = false }) {
           text: 'Hallo na wie geht es dir?',
           time: new Date().toLocaleTimeString()
         }])
-        // Nachrichtenton abspielen
         if (audioEnabled && messageSound.current) {
           messageSound.current.play().catch(err => console.log('Audio play failed:', err));
         }
@@ -49,7 +61,7 @@ export default function ChatPopup({ audioEnabled = false }) {
     }, 5000)
 
     return () => clearTimeout(timer)
-  }, [audioEnabled])
+  }, [pageLoaded, audioEnabled])
 
   // Nachrichtenton bei Meliax Antworten
   useEffect(() => {
@@ -60,6 +72,14 @@ export default function ChatPopup({ audioEnabled = false }) {
       messageSound.current.play().catch(err => console.log('Audio play failed:', err));
     }
   }, [messages, audioEnabled])
+
+  // Profilbild vorladen
+  useEffect(() => {
+    if (typeof window !== 'undefined') {
+      const preloadImage = document.createElement('img');
+      preloadImage.src = '/image/chatfoto.jpg';
+    }
+  }, []);
 
   const handleSubmit = (e) => {
     e.preventDefault()
@@ -93,7 +113,21 @@ export default function ChatPopup({ audioEnabled = false }) {
     }
   }
 
-  if (!isVisible) return null
+  if (!isVisible) {
+    // Verstecktes Image-Element zum Vorladen
+    return (
+      <div style={{ display: 'none', width: 0, height: 0, overflow: 'hidden' }}>
+        <Image
+          src="/image/chatfoto.jpg"
+          alt="Preload Meliax Profile"
+          width={60}
+          height={60}
+          priority={true}
+          quality={100}
+        />
+      </div>
+    );
+  }
 
   return (
     <>
@@ -102,11 +136,13 @@ export default function ChatPopup({ audioEnabled = false }) {
         <div className={styles.chatHeader}>
           <div className={styles.profileInfo}>
             <Image
-              src="/image/porn1 (9).jpg"
+              src="/image/chatfoto.jpg"
               alt="Meliax Profile"
               width={60}
               height={60}
               className={styles.profilePic}
+              priority={true}
+              quality={100}
             />
             <div>
               <span className={styles.name}>Meliax</span>

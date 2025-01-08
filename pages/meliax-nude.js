@@ -16,62 +16,62 @@ export default function MeliaxNude() {
 
   const galleryImages = [
     {
-      src: '/image/porn1 (1).jpg',
+      src: '/image/porn1 (1).webp',
       alt: 'Meliax Nude Exclusive',
       title: 'Meliax Nude Premium'
     },
     {
-      src: '/image/porn1 (2).jpg',
+      src: '/image/porn1 (2).webp',
       alt: 'Meliax Nude Gallery',
       title: 'Meliax Nude Private'
     },
     {
-      src: '/image/porn1 (3).jpg',
+      src: '/image/porn1 (3).webp',
       alt: 'Meliax Nude Premium',
       title: 'Meliax Nude VIP'
     },
     {
-      src: '/image/porn1 (4).jpg',
+      src: '/image/porn1 (4).webp',
       alt: 'Meliax Nude Collection',
       title: 'Meliax Nude Special'
     },
     {
-      src: '/image/porn1 (5).jpg',
+      src: '/image/porn1 (5).webp',
       alt: 'Meliax Nude Free',
       title: 'Meliax Nude Free'
     },
     {
-      src: '/image/porn1 (6).jpg',
+      src: '/image/porn1 (6).webp',
       alt: 'Meliax Nude Premium Gallery',
       title: 'Meliax Nude Premium Plus'
     },
     {
-      src: '/image/porn1 (7).jpg',
+      src: '/image/porn1 (7).webp',
       alt: 'Meliax Nude Exclusive Photos',
       title: 'Meliax Nude Special'
     },
     {
-      src: '/image/porn1 (8).jpg',
+      src: '/image/porn1 (8).webp',
       alt: 'Meliax Nude Private Gallery',
       title: 'Meliax Nude Private Plus'
     },
     {
-      src: '/image/porn1 (9).jpg',
+      src: '/image/porn1 (9).webp',
       alt: 'Meliax Nude Private Collection',
       title: 'Meliax Nude Exclusive'
     },
     {
-      src: '/image/porn1 (10).jpg',
+      src: '/image/porn1 (10).webp',
       alt: 'Meliax Nude VIP Gallery',
       title: 'Meliax Nude Elite'
     },
     {
-      src: '/image/porn1 (11).jpg',
+      src: '/image/porn1 (11).webp',
       alt: 'Meliax Nude Elite Photos',
       title: 'Meliax Nude Premium Collection'
     },
     {
-      src: '/image/porn1 (12).jpg',
+      src: '/image/porn1 (12).webp',
       alt: 'Meliax Nude Special Collection',
       title: 'Meliax Nude VIP Plus'
     }
@@ -116,15 +116,14 @@ export default function MeliaxNude() {
           {galleryImages.map((image, index) => (
             <div key={index} className={styles.imageWrapper}>
               <Image
-                src={image.src}
+                src={image.src.replace('.webp', '.jpg')}
                 alt={image.alt}
                 width={400}
                 height={600}
-                layout="responsive"
-                objectFit="cover"
-                priority={index < 2}
-                loading={index < 2 ? "eager" : "lazy"}
-                quality={85}
+                sizes="(max-width: 768px) 100vw, 400px"
+                className={styles.image}
+                priority={index < 4}
+                quality={75}
               />
               <div className={styles.imageInfo}>
                 <h4>{image.title}</h4>

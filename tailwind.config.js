@@ -1,7 +1,6 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
   content: [
-    "./app/**/*.{js,ts,jsx,tsx,mdx}",
     "./pages/**/*.{js,ts,jsx,tsx,mdx}",
     "./components/**/*.{js,ts,jsx,tsx,mdx}",
   ],
@@ -12,6 +11,7 @@ module.exports = {
         'custom-gold-light': '#e3cbaa',
       },
       fontFamily: {
+        'playfair': ['Playfair Display', 'serif'],
         'evogria': ['Evogria', 'sans-serif'],
         'coterie': ['Coterie', 'sans-serif'],
       },
@@ -21,3 +21,4 @@ module.exports = {
     require('@tailwindcss/forms'),
   ],
 }
+

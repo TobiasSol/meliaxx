@@ -43,7 +43,7 @@ export default function Header() {
     <header className="bg-black fixed top-0 left-0 right-0 z-50 animate-fadeIn">
       <nav className="container mx-auto px-4 py-4">
         <div className="flex justify-between items-center">
-          <Link href="/" className="text-3xl font-coterie text-[#e3cbaa]">
+          <Link href="/" className="text-3xl font-playfair text-[#e3cbaa]">
           MELIAX
           </Link>
           
@@ -85,7 +85,7 @@ export default function Header() {
             <div className="flex items-center space-x-4">
               <Link 
                 href="/livecam" 
-                className="text-xl font-medium text-[#d0b48f] hover:text-[#e3cbaa] transition-all duration-300
+                className="text-xl font-playfair text-[#d0b48f] hover:text-[#e3cbaa] transition-all duration-300
                            hover:scale-110 hover:shadow-lg hover:shadow-[#e3cbaa]/20 
                            px-3 py-1 rounded-lg hover:bg-[#e3cbaa]/5"
               >
@@ -93,7 +93,7 @@ export default function Header() {
               </Link>
               <Link 
                 href="#calculator" 
-                className="text-xl font-medium text-[#d0b48f] hover:text-[#e3cbaa] transition-all duration-300
+                className="text-xl font-playfair text-[#d0b48f] hover:text-[#e3cbaa] transition-all duration-300
                            hover:scale-110 hover:shadow-lg hover:shadow-[#e3cbaa]/20 
                            px-3 py-1 rounded-lg hover:bg-[#e3cbaa]/5"
               >
@@ -101,7 +101,7 @@ export default function Header() {
               </Link>
               <Link 
                 href="#videos" 
-                className="text-xl font-medium text-[#d0b48f] hover:text-[#e3cbaa] transition-all duration-300
+                className="text-xl font-playfair text-[#d0b48f] hover:text-[#e3cbaa] transition-all duration-300
                            hover:scale-110 hover:shadow-lg hover:shadow-[#e3cbaa]/20 
                            px-3 py-1 rounded-lg hover:bg-[#e3cbaa]/5"
               >
@@ -109,7 +109,7 @@ export default function Header() {
               </Link>
               <Link 
                 href="#shop" 
-                className="text-xl font-medium text-[#d0b48f] hover:text-[#e3cbaa] transition-all duration-300
+                className="text-xl font-playfair text-[#d0b48f] hover:text-[#e3cbaa] transition-all duration-300
                            hover:scale-110 hover:shadow-lg hover:shadow-[#e3cbaa]/20 
                            px-3 py-1 rounded-lg hover:bg-[#e3cbaa]/5"
               >
@@ -117,7 +117,7 @@ export default function Header() {
               </Link>
               <Link 
                 href="#wishlist" 
-                className="text-xl font-medium text-[#d0b48f] hover:text-[#e3cbaa] transition-all duration-300
+                className="text-xl font-playfair text-[#d0b48f] hover:text-[#e3cbaa] transition-all duration-300
                            hover:scale-110 hover:shadow-lg hover:shadow-[#e3cbaa]/20 
                            px-3 py-1 rounded-lg hover:bg-[#e3cbaa]/5"
               >
@@ -125,7 +125,7 @@ export default function Header() {
               </Link>
               <Link 
                 href="https://www.twitch.tv" 
-                className="text-xl font-medium text-[#d0b48f] hover:text-[#e3cbaa] transition-all duration-300
+                className="text-xl font-playfair text-[#d0b48f] hover:text-[#e3cbaa] transition-all duration-300
                            hover:scale-110 hover:shadow-lg hover:shadow-[#e3cbaa]/20 
                            px-3 py-1 rounded-lg hover:bg-[#e3cbaa]/5 flex items-center gap-2"
               >
@@ -134,7 +134,7 @@ export default function Header() {
               </Link>
               <Link 
                 href="https://x.com/me_lia_x" 
-                className="text-xl font-medium text-[#d0b48f] hover:text-[#e3cbaa] transition-all duration-300
+                className="text-xl font-playfair text-[#d0b48f] hover:text-[#e3cbaa] transition-all duration-300
                            hover:scale-110 hover:shadow-lg hover:shadow-[#e3cbaa]/20 
                            px-3 py-1 rounded-lg hover:bg-[#e3cbaa]/5 flex items-center gap-2"
               >
@@ -143,7 +143,7 @@ export default function Header() {
               </Link>
               <Link 
                 href="https://www.instagram.com/me.lia.x" 
-                className="text-xl font-medium text-[#d0b48f] hover:text-[#e3cbaa] transition-all duration-300
+                className="text-xl font-playfair text-[#d0b48f] hover:text-[#e3cbaa] transition-all duration-300
                            hover:scale-110 hover:shadow-lg hover:shadow-[#e3cbaa]/20 
                            px-3 py-1 rounded-lg hover:bg-[#e3cbaa]/5 flex items-center gap-2"
               >

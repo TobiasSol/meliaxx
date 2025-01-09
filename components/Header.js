@@ -40,7 +40,7 @@ export default function Header() {
   }, []); // Läuft nur einmal beim Mounting
 
   return (
-    <header className="bg-black fixed top-0 left-0 right-0 z-50 animate-fadeIn">
+    <header className="bg-black fixed top-0 left-0 right-0 z-50 animate-fadeIn border-b border-[#e3cbaa]/20 shadow-lg shadow-black/50">
       <nav className="container mx-auto px-4 py-4">
         <div className="flex justify-between items-center">
           <Link href="/" className="text-3xl font-playfair text-[#e3cbaa]">

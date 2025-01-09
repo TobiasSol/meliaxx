@@ -103,7 +103,7 @@ export default function Home() {
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://meliaxx.de" />
   <meta property="og:title" content="Meliax | Content Creator & Digital Artist" />
-  <meta property="og:description" content="Willkommen bei Meliax - Ihrer exklusiven Content Creatorin und Digital Artist. Entdecken Sie einzigartige Videos, Bilder und digitale Kunst." />
+  <meta property="og:description" content="Willkommen bei Meliax - Ihrer exklusiven Sexy Content Creator & Porn Artist. Entdecken Sie einzigartige Videos, Bilder und digitale Kunst." />
   <meta property="og:image" content="https://meliaxx.de/videos/meliax.avif" />
   <meta property="og:site_name" content="Meliax" />
   
@@ -111,7 +111,7 @@ export default function Home() {
   <meta property="twitter:card" content="summary_large_image" />
   <meta property="twitter:url" content="https://meliaxx.de" />
   <meta property="twitter:title" content="Meliax | Content Creator & Digital Artist" />
-  <meta property="twitter:description" content="Willkommen bei Meliax - Ihrer exklusiven Content Creatorin und Digital Artist. Entdecken Sie einzigartige Videos, Bilder und digitale Kunst." />
+  <meta property="twitter:description" content="Willkommen bei Meliax - Ihrer exklusiven Sexy Content Creator & Porn Artist. Entdecken Sie einzigartige Videos, Bilder und digitale Kunst." />
   <meta property="twitter:image" content="https://meliaxx.de/videos/meliax.avif" />
   
   {/* Canonical URL */}
@@ -170,7 +170,7 @@ export default function Home() {
                 Sexy Content Creator & Porn Artist
               </p>
               <p className="text-xl text-white/80 max-w-2xl mx-auto px-4">
-                Willkommen in meiner kreativen Welt! Als Meliax erschaffe ich einzigartige digitale Inhalte und Kunst, die Sie nur hier finden.
+                Willkommen in meiner kreativen Welt!<br></br> Als Meliax erschaffe ich einzigartige digitale Inhalte und Kunst, die Sie nur hier finden.
               </p>
             </div>
           </section>

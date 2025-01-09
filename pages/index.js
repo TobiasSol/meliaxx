@@ -245,108 +245,130 @@ export default function Home() {
           </section>
 
           {/* Shop Section */}
-          <section className="mb-48 text-center" id="shop">
+          <section className="mb-48 text-center relative" id="shop">
             <h2 className="text-3xl font-playfair font-bold text-[#e3cbaa] mb-8">
               Shop
             </h2>
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-              {shopArticles.map((product) => (
-                <div 
-                  key={product.id}
-                  className="bg-gray-900 rounded-lg overflow-hidden hover:transform hover:scale-105 transition-transform duration-300"
-                >
-                  <div className="relative aspect-[4/3] border-4 border-[#e3cbaa] rounded-lg overflow-hidden">
-                    <Image
-                      src={product.image}
-                      alt={product.title}
-                      fill
-                      className="object-cover"
-                    />
-                  </div>
-                  
-                  <div className="p-6">
-                    <h3 className="text-[#e3cbaa] text-xl font-bold mb-2">
-                      {product.title}
-                    </h3>
-                    <p className="text-gray-300 mb-4">
-                      {product.description}
-                    </p>
-                    <div className="flex justify-between items-center">
-                      <span className="text-[#e3cbaa] text-xl font-bold">
-                        {product.price}
-                      </span>
-                      <button className="bg-[#e3cbaa] text-black px-4 py-2 rounded-lg hover:bg-[#d0b48f] transition-colors font-bold">
-                        Kaufen
-                      </button>
+            
+            {/* Bald verfügbar Overlay */}
+            <div className="absolute inset-0 flex items-center justify-center z-10">
+              <span className="text-2xl font-playfair font-bold text-[#e3cbaa] bg-black/80 px-6 py-3 rounded-lg">
+                Bald verfügbar
+              </span>
+            </div>
+            
+            {/* Artikel mit Blur-Effekt */}
+            <div className="filter blur-sm">
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+                {shopArticles.map((product) => (
+                  <div 
+                    key={product.id}
+                    className="bg-gray-900 rounded-lg overflow-hidden hover:transform hover:scale-105 transition-transform duration-300"
+                  >
+                    <div className="relative aspect-[4/3] border-4 border-[#e3cbaa] rounded-lg overflow-hidden">
+                      <Image
+                        src={product.image}
+                        alt={product.title}
+                        fill
+                        className="object-cover"
+                      />
+                    </div>
+                    
+                    <div className="p-6">
+                      <h3 className="text-[#e3cbaa] text-xl font-bold mb-2">
+                        {product.title}
+                      </h3>
+                      <p className="text-gray-300 mb-4">
+                        {product.description}
+                      </p>
+                      <div className="flex justify-between items-center">
+                        <span className="text-[#e3cbaa] text-xl font-bold">
+                          {product.price}
+                        </span>
+                        <button className="bg-[#e3cbaa] text-black px-4 py-2 rounded-lg hover:bg-[#d0b48f] transition-colors font-bold">
+                          Kaufen
+                        </button>
+                      </div>
                     </div>
                   </div>
-                </div>
-              ))}
+                ))}
+              </div>
             </div>
           </section>
 
           {/* Wishlist Section */}
-          <section className="mb-28 text-center" id="wishlist">
+          <section className="mb-28 text-center relative" id="wishlist">
             <h2 className="text-3xl font-playfair font-bold text-[#e3cbaa] mb-8">
               Wishlist
             </h2>
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-              {[
-                {
-                  id: 1,
-                  title: "Louboutin High Heels",
-                  price: "745,00 €",
-                  image: "/videos/blindfold-harness-and-ball-gag-194871.png",
-                  link: "https://example.com/heels"
-                },
-                {
-                  id: 2,
-                  title: "Victoria's Secret Set",
-                  price: "199,99 €",
-                  image: "/videos/blindfold-harness-and-ball-gag-194871.png",
-                  link: "https://example.com/lingerie"
-                },
-                {
-                  id: 3,
-                  title: "Gucci Handtasche",
-                  price: "2.199,00 €",
-                  image: "/videos/blindfold-harness-and-ball-gag-194871.png",
-                  link: "https://example.com/bag"
-                }
-              ].map((item) => (
-                <div 
-                  key={item.id}
-                  className="bg-gray-900 rounded-lg overflow-hidden hover:transform hover:scale-105 transition-transform duration-300"
-                >
-                  <div className="relative aspect-[4/4] border-4 border-[#e3cbaa] rounded-lg overflow-hidden">
-                    <Image
-                      src={item.image}
-                      alt={item.title}
-                      fill
-                      className="object-cover"
-                    />
-                  </div>
-                  
-                  <div className="p-6">
-                    <h3 className="text-[#e3cbaa] text-xl font-bold mb-2">
-                      {item.title}
-                    </h3>
-                    <div className="flex justify-between items-center">
-                      <span className="text-[#e3cbaa] text-xl font-bold">
-                        {item.price}
-                      </span>
-                      <a 
-                        href={item.link}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="bg-[#e3cbaa] text-black px-4 py-2 rounded-lg hover:bg-[#d0b48f] transition-colors font-bold"
-                      >
-                        Schenken
-                      </a>
+            
+            {/* Bald verfügbar Overlay */}
+            <div className="absolute inset-0 flex items-center justify-center z-10">
+              <span className="text-2xl font-playfair font-bold text-[#e3cbaa] bg-black/80 px-6 py-3 rounded-lg">
+                Bald verfügbar
+              </span>
+            </div>
+            
+            {/* Artikel mit Blur-Effekt */}
+            <div className="filter blur-sm">
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+                {[
+                  {
+                    id: 1,
+                    title: "Louboutin High Heels",
+                    price: "745,00 €",
+                    image: "/videos/blindfold-harness-and-ball-gag-194871.png",
+                    link: "https://example.com/heels"
+                  },
+                  {
+                    id: 2,
+                    title: "Victoria's Secret Set",
+                    price: "199,99 €",
+                    image: "/videos/blindfold-harness-and-ball-gag-194871.png",
+                    link: "https://example.com/lingerie"
+                  },
+                  {
+                    id: 3,
+                    title: "Gucci Handtasche",
+                    price: "2.199,00 €",
+                    image: "/videos/blindfold-harness-and-ball-gag-194871.png",
+                    link: "https://example.com/bag"
+                  }
+                ].map((item) => (
+                  <div 
+                    key={item.id}
+                    className="bg-gray-900 rounded-lg overflow-hidden hover:transform hover:scale-105 transition-transform duration-300"
+                  >
+                    <div className="relative aspect-[4/4] border-4 border-[#e3cbaa] rounded-lg overflow-hidden">
+                      <Image
+                        src={item.image}
+                        alt={item.title}
+                        fill
+                        className="object-cover"
+                      />
+                    </div>
+                    
+                    <div className="p-6">
+                      <h3 className="text-[#e3cbaa] text-xl font-bold mb-2">
+                        {item.title}
+                      </h3>
+                      <div className="flex justify-between items-center">
+                        <span className="text-[#e3cbaa] text-xl font-bold">
+                          {item.price}
+                        </span>
+                        <a 
+                          href={item.link}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="bg-[#e3cbaa] text-black px-4 py-2 rounded-lg hover:bg-[#d0b48f] transition-colors font-bold"
+                        >
+                          Schenken
+                        </a>
+                      </div>
                     </div>
                   </div>
-                </div>
-              ))}
+                ))}
+              </div>
             </div>
           </section>
 

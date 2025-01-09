@@ -15,7 +15,7 @@ export default function Footer() {
   return (
     <footer className="bg-black text-white border-[#d0b48f]">
       <div className="container mx-auto px-4 py-12">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
           {/* Newsletter Signup */}
           <div>
             <h3 className="text-xl font-playfair font-bold text-[#e3cbaa] mb-4">Newsletter</h3>
@@ -37,6 +37,31 @@ export default function Footer() {
                 </button>
               </div>
             </form>
+          </div>
+
+          {/* Meliax Links */}
+          <div>
+            <h3 className="text-xl font-bold text-[#e3cbaa] mb-4">Meliax Content</h3>
+            <div className="space-y-2">
+              <Link href="/meliax-cam" className="block text-[#d0b48f] hover:text-[#e3cbaa]">
+                Meliax Cam
+              </Link>
+              <Link href="/meliax-onlyfans" className="block text-[#d0b48f] hover:text-[#e3cbaa]">
+                Meliax OnlyFans
+              </Link>
+              <Link href="/meliax-stripchat" className="block text-[#d0b48f] hover:text-[#e3cbaa]">
+                Meliax Stripchat
+              </Link>
+              <Link href="/meliax-nude" className="block text-[#d0b48f] hover:text-[#e3cbaa]">
+                Meliax Nude
+              </Link>
+              <Link href="/meliax-leak" className="block text-[#d0b48f] hover:text-[#e3cbaa]">
+                Meliax Leak
+              </Link>
+              <Link href="/meliax-porn" className="block text-[#d0b48f] hover:text-[#e3cbaa]">
+                Meliax Porn
+              </Link>
+            </div>
           </div>
 
           {/* Social Media Links */}

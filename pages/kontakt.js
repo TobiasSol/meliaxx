@@ -75,10 +75,7 @@ export default function Kontakt() {
                   <strong className="text-[#d0b48f]">E-Mail:</strong><br />
                   kontakt@meliax.de
                 </p>
-                <p>
-                  <strong className="text-[#d0b48f]">Geschäftszeiten:</strong><br />
-                  Montag - Freitag: 10:00 - 18:00 Uhr
-                </p>
+               
                 <p>
                   <strong className="text-[#d0b48f]">Antwortzeit:</strong><br />
                   In der Regel innerhalb von 24 Stunden

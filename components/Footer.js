@@ -117,6 +117,12 @@ export default function Footer() {
               >
                 AGB
               </Link>
+              <Link
+                href="/kontakt"
+                className="block text-[#d0b48f] hover:text-[#e3cbaa]"
+              >
+                Kontakt
+              </Link>
             </div>
           </div>
         </div>

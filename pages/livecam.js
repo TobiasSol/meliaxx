@@ -7,6 +7,7 @@ export default function LiveCam() {
   const [quality, setQuality] = useState('HD');
   const [extras, setExtras] = useState([]);
   const [error, setError] = useState(null);
+  const [email, setEmail] = useState('');
 
   const calculatePrice = () => {
     let basePrice = duration === 10 ? 100 : duration === 20 ? 180 : duration === 30 ? 350 : 600;
@@ -30,21 +31,62 @@ export default function LiveCam() {
     return basePrice + additionalCosts;
   };
 
-  const handleSubmit = () => {
-    setError(null);
+  const validateForm = () => {
+    if (!email || !email.includes('@')) {
+      setError('Bitte gib eine gültige E-Mail-Adresse ein');
+      return false;
+    }
 
     if (extras.length === 0) {
       setError('Bitte wähle mindestens ein Extra aus');
+      return false;
+    }
+
+    return true;
+  };
+
+  const resetForm = () => {
+    setDuration(10);
+    setQuality('HD');
+    setExtras([]);
+    setEmail('');
+    setError(null);
+  };
+
+  const handleSubmit = async () => {
+    setError(null);
+
+    if (!validateForm()) {
       return;
     }
 
-    // Hier könnte später die Weiterleitung zum Buchungssystem erfolgen
-    console.log('Buchungsanfrage:', {
-      duration,
-      quality,
-      extras,
-      totalPrice: calculatePrice()
-    });
+    try {
+      const response = await fetch('/api/livecam-request', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          email,
+          duration,
+          quality,
+          extras,
+          totalPrice: calculatePrice()
+        }),
+      });
+
+      const data = await response.json();
+
+      if (response.ok) {
+        alert('Vielen Dank für deine Anfrage! Wir werden uns zeitnah bei dir melden.');
+        resetForm();
+      } else {
+        throw new Error(data.message || 'Ein Fehler ist aufgetreten');
+      }
+    } catch (error) {
+      console.error('Request error:', error);
+      setError('Ein Fehler ist aufgetreten. Bitte versuche es später erneut.');
+    }
   };
 
   return (
@@ -151,6 +193,19 @@ export default function LiveCam() {
               </div>
             </div>
 
+            {/* Email Input */}
+            <div>
+              <h3 className="text-xl font-bold text-[#d0b48f] mb-4">Deine E-Mail</h3>
+              <input
+                type="email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                placeholder="Deine E-Mail für Rückfragen"
+                className="w-full p-4 rounded-lg border-2 border-gray-700 bg-black text-white focus:border-[#d0b48f]"
+                required
+              />
+            </div>
+
             <div className="pt-6 border-t border-gray-800">
               <div className="text-3xl font-bold text-center mb-6">
                 <span className="text-[#d0b48f]">Gesamtpreis: </span>
@@ -161,7 +216,7 @@ export default function LiveCam() {
                 onClick={handleSubmit}
                 className="w-full bg-[#e3cbaa] text-black py-4 rounded-lg font-bold text-lg hover:bg-[#d0b48f] transition-colors"
               >
-                Jetzt buchen
+                Jetzt anfragen
               </button>
             </div>
           </div>

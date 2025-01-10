@@ -10,6 +10,7 @@ export default function VideoCalculator() {
   const [deliveryTime, setDeliveryTime] = useState('1 Week');
   const [appreciation, setAppreciation] = useState('');
   const [email, setEmail] = useState('');
+  const [storyWishes, setStoryWishes] = useState('');
 
   const calculatePrice = () => {
     let basePrice = duration === 10 ? 200 : 340;
@@ -94,6 +95,7 @@ export default function VideoCalculator() {
     setDeliveryTime('1 Week');
     setAppreciation('');
     setEmail('');
+    setStoryWishes('');
   };
 
   const handleSubmit = async () => {
@@ -117,6 +119,7 @@ export default function VideoCalculator() {
           videoType,
           deliveryTime,
           appreciation,
+          storyWishes,
           totalPrice: calculatePrice()
         }),
       });
@@ -161,7 +164,7 @@ export default function VideoCalculator() {
                   <div
                     key={option.duration}
                     onClick={() => setDuration(option.duration)}
-                    className={`cursor-pointer p-4 rounded-lg border-2 transition-all ${
+                    className={`cursor-pointer py-3 px-4 rounded-lg border-2 transition-all ${
                       duration === option.duration 
                       ? 'bg-gray-900 border-[#d0b48f]' 
                       : 'border-gray-800 hover:border-gray-900'
@@ -193,10 +196,10 @@ export default function VideoCalculator() {
                   <div
                     key={lang}
                     onClick={() => setLanguage(lang)}
-                    className={`cursor-pointer p-4 rounded-lg border-2 transition-all ${
+                    className={`cursor-pointer py-2 px-4 rounded-lg border-2 transition-all ${
                       language === lang 
                       ? 'bg-gray-900 border-[#d0b48f]' 
-                      : 'border-gray-800 hover:border-gray-900'
+                      : 'border-gray-800  hover:border-gray-900'
                     }`}
                   >
                     <span className={`text-base font-bold ${language === lang ? 'text-[#d0b48f]' : 'text-gray-900'}`}>
@@ -211,7 +214,7 @@ export default function VideoCalculator() {
             <div className="bg-gradient-to-b from-[#d0b48f] to-[#e5d4bc] rounded-xl p-3 shadow-lg">
               <label className="block text-xl font-black text-gray-900 mb-4 flex items-center">
                 <div className="flex items-center justify-center w-8 h-8 bg-gray-900 text-[#d0b48f] rounded-full mr-2 flex-shrink-0">
-                  <span className="text-base">4</span>
+                  <span className="text-base">3</span>
                 </div>
                 Setting
               </label>
@@ -226,7 +229,7 @@ export default function VideoCalculator() {
                   <div
                     key={set.name}
                     onClick={() => setSetting(set.name)}
-                    className={`cursor-pointer p-4 rounded-lg border-2 transition-all ${
+                    className={`cursor-pointer py-3 px-4 rounded-lg border-2 transition-all ${
                       setting === set.name 
                       ? 'bg-gray-900 border-[#d0b48f]' 
                       : 'border-gray-800 hover:border-gray-900'
@@ -254,7 +257,7 @@ export default function VideoCalculator() {
             <div className="bg-gradient-to-b from-[#d0b48f] to-[#e5d4bc] rounded-xl p-3 shadow-lg">
               <label className="block text-xl font-black text-gray-900 mb-4 flex items-center">
                 <div className="flex items-center justify-center w-8 h-8 bg-gray-900 text-[#d0b48f] rounded-full mr-2 flex-shrink-0">
-                  <span className="text-base">3</span>
+                  <span className="text-base">4</span>
                 </div>
                 Extras
               </label>
@@ -281,7 +284,7 @@ export default function VideoCalculator() {
                         setExtras([...extras, extra.name]);
                       }
                     }}
-                    className={`cursor-pointer p-4 rounded-lg border-2 transition-all ${
+                    className={`cursor-pointer py-3 px-4 rounded-lg border-2 transition-all ${
                       extras.includes(extra.name)
                       ? 'bg-gray-900 border-[#d0b48f]' 
                       : 'border-gray-800 hover:border-gray-900'
@@ -318,7 +321,7 @@ export default function VideoCalculator() {
                     <div
                       key={type}
                       onClick={() => setVideoType(type)}
-                      className={`cursor-pointer p-4 rounded-lg border-2 transition-all ${
+                      className={`cursor-pointer py-2 px-4 rounded-lg border-2 transition-all ${
                         videoType === type 
                         ? 'bg-gray-900 border-[#d0b48f]' 
                         : 'border-gray-800 hover:border-gray-900'
@@ -335,7 +338,7 @@ export default function VideoCalculator() {
                   <span className="text-base font-bold text-gray-900">Resolution</span>
                   <div
                     onClick={() => setIs4K(false)}
-                    className={`cursor-pointer p-4 rounded-lg border-2 transition-all ${
+                    className={`cursor-pointer py-3 px-4 rounded-lg border-2 transition-all ${
                       !is4K ? 'bg-gray-900 border-[#d0b48f]' : 'border-gray-800 hover:border-gray-900'
                     }`}
                   >
@@ -345,7 +348,7 @@ export default function VideoCalculator() {
                   </div>
                   <div
                     onClick={() => setIs4K(true)}
-                    className={`cursor-pointer p-4 rounded-lg border-2 transition-all ${
+                    className={`cursor-pointer py-3 px-4 rounded-lg border-2 transition-all ${
                       is4K ? 'bg-gray-900 border-[#d0b48f]' : 'border-gray-800 hover:border-gray-900'
                     }`}
                   >
@@ -381,7 +384,7 @@ export default function VideoCalculator() {
                     <div
                       key={delivery.time}
                       onClick={() => setDeliveryTime(delivery.time)}
-                      className={`cursor-pointer p-4 rounded-lg border-2 transition-all ${
+                      className={`cursor-pointer py-3 px-4 rounded-lg border-2 transition-all ${
                         deliveryTime === delivery.time 
                         ? 'bg-gray-900 border-[#d0b48f]' 
                         : 'border-gray-800 hover:border-gray-900'
@@ -412,7 +415,7 @@ export default function VideoCalculator() {
                     <div
                       key={app.name}
                       onClick={() => setAppreciation(app.name)}
-                      className={`cursor-pointer p-4 rounded-lg border-2 transition-all ${
+                      className={`cursor-pointer py-3 px-4 rounded-lg border-2 transition-all ${
                         appreciation === app.name 
                         ? 'bg-gray-900 border-[#d0b48f]' 
                         : 'border-gray-800 hover:border-gray-900'
@@ -432,30 +435,47 @@ export default function VideoCalculator() {
               </div>
             </div>
 
-{/* Email Field */}
-<div className="bg-gradient-to-b from-[#d0b48f] to-[#e5d4bc] rounded-xl p-3 shadow-lg">
-  <label className="block text-xl font-black text-gray-900 mb-4 flex items-center">
-    <div className="flex items-center justify-center w-8 h-8 bg-gray-900 text-[#d0b48f] rounded-full mr-2 flex-shrink-0">
-      <span className="text-base">6</span>
-    </div>
-    Deine E-Mail
-  </label>
-  <div className="space-y-4">
-    <div className="flex flex-col space-y-1">
-      <input
-        type="email"
-        value={email}
-        onChange={(e) => setEmail(e.target.value)}
-        placeholder="Deine E-Mail für Rückfragen"
-        className="p-4 rounded-lg border-2 border-gray-800 bg-white text-gray-900"
-        required
-      />
-    </div>
-  </div>
-</div>
+            {/* Story & Wünsche */}
+            <div className="bg-gradient-to-b from-[#d0b48f] to-[#e5d4bc] rounded-xl p-3 shadow-lg">
+              <label className="block text-xl font-black text-gray-900 mb-4 flex items-center">
+                <div className="flex items-center justify-center w-8 h-8 bg-gray-900 text-[#d0b48f] rounded-full mr-2 flex-shrink-0">
+                  <span className="text-base">7</span>
+                </div>
+                Deine Story & Wünsche
+              </label>
+              <div className="space-y-4">
+                <div className="flex flex-col space-y-1">
+                  <textarea
+                    value={storyWishes}
+                    onChange={(e) => setStoryWishes(e.target.value)}
+                    placeholder="Beschreibe hier deine Vorstellungen und wie das Video gegliedert sein soll..."
+                    className="p-3 rounded-lg border-2 border-gray-800 bg-white text-gray-900 min-h-[120px] resize-y"
+                  />
+                </div>
+              </div>
+            </div>
 
-
-
+            {/* Email Field */}
+            <div className="bg-gradient-to-b from-[#d0b48f] to-[#e5d4bc] rounded-xl p-3 shadow-lg">
+              <label className="block text-xl font-black text-gray-900 mb-4 flex items-center">
+                <div className="flex items-center justify-center w-8 h-8 bg-gray-900 text-[#d0b48f] rounded-full mr-2 flex-shrink-0">
+                  <span className="text-base">8</span>
+                </div>
+                Deine E-Mail
+              </label>
+              <div className="space-y-4">
+                <div className="flex flex-col space-y-1 ">
+                  <input
+                    type="email"
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
+                    placeholder="Deine E-Mail für Rückfragen"
+                    className="p-3 rounded-lg border-2 border-gray-800 bg-white text-gray-900"
+                    required
+                  />
+                </div>
+              </div>
+            </div>
 
             {/* Checkout Button */}
             <div className="bg-gradient-to-b from-[#d0b48f] to-[#e5d4bc] rounded-xl p-3 shadow-lg">
@@ -463,12 +483,12 @@ export default function VideoCalculator() {
                 Gesamtpreis: {calculatePrice()}€
               </div>
               <button
-  onClick={handleSubmit}
-  className="w-full bg-gray-900 text-[#d0b48f] text-lg font-black py-4 px-6 rounded-lg hover:bg-gray-800 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
-  disabled={extras.length === 0}
->
-  Jetzt anfragen
-</button>
+                onClick={handleSubmit}
+                className="w-full bg-gray-900 text-[#d0b48f] text-lg font-black py-3 px-4 rounded-lg hover:bg-gray-800 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+                disabled={extras.length === 0}
+              >
+                Jetzt anfragen
+              </button>
             </div>
           </div>
         </div>

@@ -125,12 +125,41 @@ export default function VideoCalculator() {
     if (!validateOrder()) {
       return;
     }
-
+  
     try {
-      await handleCheckout();
+      const response = await fetch('/api/video-request', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          duration,
+          is4K,
+          extras,
+          language,
+          setting,
+          videoType,
+          deliveryTime,
+          appreciation,
+          totalPrice: calculatePrice()
+        }),
+      });
+  
+      const data = await response.json();
+  
+      if (response.ok) {
+        alert('Vielen Dank für deine Anfrage! Wir werden uns zeitnah bei dir melden.');
+        // Optional: Form zurücksetzen
+        setExtras([]);
+        setIs4K(false);
+        setAppreciation('');
+        // ... weitere Resets
+      } else {
+        throw new Error(data.message || 'Ein Fehler ist aufgetreten');
+      }
     } catch (error) {
-      console.error('Checkout error:', error);
-      alert('Ein Fehler ist aufgetreten. Bitte versuchen Sie es später erneut.');
+      console.error('Request error:', error);
+      alert('Ein Fehler ist aufgetreten. Bitte versuche es später erneut.');
     }
   };
 
@@ -438,12 +467,12 @@ export default function VideoCalculator() {
                 Gesamtpreis: {calculatePrice()}€
               </div>
               <button
-                onClick={handleSubmit}
-                className="w-full bg-gray-900 text-[#d0b48f] text-lg font-black py-4 px-6 rounded-lg hover:bg-gray-800 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
-                disabled={extras.length === 0}
-              >
-                Jetzt bestellen
-              </button>
+  onClick={handleSubmit}
+  className="w-full bg-gray-900 text-[#d0b48f] text-lg font-black py-4 px-6 rounded-lg hover:bg-gray-800 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+  disabled={extras.length === 0}
+>
+  Jetzt anfragen
+</button>
             </div>
           </div>
         </div>

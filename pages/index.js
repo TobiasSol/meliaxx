@@ -154,7 +154,7 @@ export default function Home() {
         <main className="container mx-auto px-4 py-8">
           {/* Hero Section */}
           <section className="mb-28 text-center relative h-screen">
-            <div className="absolute inset-2 border-4 border-[#e3cbaa]/30 rounded-lg z-20" />
+            <div className="absolute inset-2  rounded-lg z-20" />
             <div 
               className="absolute inset-0 bg-[url('/videos/header.jpg')] bg-cover bg-center w-full h-full"
               style={{

@@ -1,4 +1,3 @@
-// 2. Aktualisiere pages/api/contact.js
 import { sendMail } from '../../lib/mail';
 
 export default async function handler(req, res) {
@@ -9,9 +8,8 @@ export default async function handler(req, res) {
   const { name, email, subject, message } = req.body;
 
   try {
-    // E-Mail an dich
     const result = await sendMail({
-      to: process.env.CONTACT_EMAIL, // Die Cloudflare weiterleitende E-Mail
+      to: process.env.CONTACT_EMAIL, // kontakt@meliaxx.de
       subject: `Neue Kontaktanfrage: ${subject}`,
       text: `
         Name: ${name}
@@ -62,4 +60,3 @@ export default async function handler(req, res) {
     res.status(500).json({ message: 'Fehler beim Senden der Nachricht' });
   }
 }
-

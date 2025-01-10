@@ -1,4 +1,3 @@
-// 2. Erstelle pages/api/newsletter.js
 import { sendMail } from '../../lib/mail';
 
 export default async function handler(req, res) {
@@ -13,16 +12,25 @@ export default async function handler(req, res) {
   }
 
   try {
-    // E-Mail an dich (Admin)
+    // E-Mail an Admin (dich)
     const result = await sendMail({
       to: process.env.CONTACT_EMAIL,
       subject: 'Neue Newsletter-Anmeldung',
-      text: `Neue Newsletter-Anmeldung von: ${email}`,
+      text: `
+        Neue Newsletter-Anmeldung!
+        
+        E-Mail: ${email}
+        Zeitpunkt: ${new Date().toLocaleString('de-DE')}
+
+        Diese E-Mail wurde automatisch generiert.
+      `,
       html: `
-        <h2>Neue Newsletter-Anmeldung</h2>
-        <p>Eine neue Person hat sich für den Newsletter angemeldet:</p>
-        <p><strong>E-Mail:</strong> ${email}</p>
-        <p>Zeitpunkt: ${new Date().toLocaleString('de-DE')}</p>
+        <h2>Neue Newsletter-Anmeldung!</h2>
+        <div style="margin: 20px 0; padding: 20px; background: #f5f5f5; border-radius: 5px;">
+          <p><strong>E-Mail:</strong> ${email}</p>
+          <p><strong>Zeitpunkt:</strong> ${new Date().toLocaleString('de-DE')}</p>
+        </div>
+        <p style="color: #666; font-size: 12px;">Diese E-Mail wurde automatisch generiert.</p>
       `
     });
 
@@ -30,19 +38,23 @@ export default async function handler(req, res) {
       // Bestätigungs-E-Mail an den Abonnenten
       await sendMail({
         to: email,
-        subject: 'Newsletter-Anmeldung bestätigt',
+        subject: 'Willkommen beim Meliax Newsletter!',
         text: `
-          Vielen Dank für deine Newsletter-Anmeldung!
+          Hallo!
+
+          Vielen Dank für deine Anmeldung zum Meliax Newsletter!
           
-          Du wirst ab jetzt regelmäßig Updates von uns erhalten.
+          Du wirst ab jetzt regelmäßig Updates und exklusive Einblicke von uns erhalten.
           
           Mit besten Grüßen
           Dein Meliax-Team
         `,
         html: `
-          <h2>Willkommen beim Meliax Newsletter!</h2>
-          <p>Vielen Dank für deine Anmeldung zu unserem Newsletter!</p>
-          <p>Du wirst ab jetzt regelmäßig Updates von uns erhalten.</p>
+          <h2 style="color: #e3cbaa;">Willkommen beim Meliax Newsletter!</h2>
+          <p>Hallo!</p>
+          <p>Vielen Dank für deine Anmeldung zum Meliax Newsletter!</p>
+          <p>Du wirst ab jetzt regelmäßig Updates und exklusive Einblicke von uns erhalten.</p>
+          <br>
           <p>
             Mit besten Grüßen<br>
             Dein Meliax-Team

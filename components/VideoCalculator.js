@@ -1,132 +1,139 @@
 import { useState } from "react";
 
 export default function VideoCalculator() {
- const [duration, setDuration] = useState(10);
- const [is4K, setIs4K] = useState(false);
- const [extras, setExtras] = useState([]);
- const [language, setLanguage] = useState('Deutsch');
- const [setting, setSetting] = useState('Bedroom');
- const [videoType, setVideoType] = useState('Portrait');
- const [deliveryTime, setDeliveryTime] = useState('1 Week');
- const [appreciation, setAppreciation] = useState('');
- const [email, setEmail] = useState('');
+  const [duration, setDuration] = useState(10);
+  const [is4K, setIs4K] = useState(false);
+  const [extras, setExtras] = useState([]);
+  const [language, setLanguage] = useState('Deutsch');
+  const [setting, setSetting] = useState('Bedroom');
+  const [videoType, setVideoType] = useState('Portrait');
+  const [deliveryTime, setDeliveryTime] = useState('1 Week');
+  const [appreciation, setAppreciation] = useState('');
+  const [email, setEmail] = useState('');
 
- const calculatePrice = () => {
-   let basePrice = duration === 10 ? 200 : 340;
-   let additionalCosts = 0;
-   
-   if (is4K) additionalCosts += 20;
-   
-   const extraPrices = {
-     'Say your name': 15,
-     'Dirtytalk': 20,
-     'Twerking': 25,
-     'Feetplay': 25,
-     'Blowjob Dildo': 100,
-     'Fingering': 150,
-     'Dildo Play Pussy': 200,
-     'Titjob': 75,
-     'Use Oil': 50,
-     'Striptease': 100,
-     'Orgasm': 100
-   };
-   
-   extras.forEach(extra => {
-     additionalCosts += extraPrices[extra] || 0;
-   });
+  const calculatePrice = () => {
+    let basePrice = duration === 10 ? 200 : 340;
+    let additionalCosts = 0;
+    
+    if (is4K) additionalCosts += 20;
+    
+    const extraPrices = {
+      'Say your name': 15,
+      'Dirtytalk': 20,
+      'Twerking': 25,
+      'Feetplay': 25,
+      'Blowjob Dildo': 100,
+      'Fingering': 150,
+      'Dildo Play Pussy': 200,
+      'Titjob': 75,
+      'Use Oil': 50,
+      'Striptease': 100,
+      'Orgasm': 100
+    };
+    
+    extras.forEach(extra => {
+      additionalCosts += extraPrices[extra] || 0;
+    });
 
-   const settingPrices = {
-     'Shower': 10,
-     'Jaccuzi': 10,
-     'Car': 15
-   };
-   additionalCosts += settingPrices[setting] || 0;
+    const settingPrices = {
+      'Shower': 10,
+      'Jaccuzi': 10,
+      'Car': 15
+    };
+    additionalCosts += settingPrices[setting] || 0;
 
-   if (deliveryTime === '48 hours') additionalCosts += 20;
+    if (deliveryTime === '48 hours') additionalCosts += 20;
 
-   const appreciationPrices = {
-     'Show some Love': 20,
-     'I Like you': 100,
-     'I Cant wait for the Video': 150,
-     'I LOVE YOU': 500
-   };
-   additionalCosts += appreciationPrices[appreciation] || 0;
+    const appreciationPrices = {
+      'Show some Love': 20,
+      'I Like you': 100,
+      'I Cant wait for the Video': 150,
+      'I LOVE YOU': 500
+    };
+    additionalCosts += appreciationPrices[appreciation] || 0;
 
-   return basePrice + additionalCosts;
- };
+    return basePrice + additionalCosts;
+  };
 
- const validateOrder = () => {
-   if (!email || !email.includes('@')) {
-     alert('Bitte gib eine gültige E-Mail-Adresse ein.');
-     return false;
-   }
+  const validateOrder = () => {
+    if (!email || !email.includes('@')) {
+      alert('Bitte gib eine gültige E-Mail-Adresse ein.');
+      return false;
+    }
 
-   if (extras.length === 0) {
-     alert('Bitte wähle mindestens ein Extra aus.');
-     return false;
-   }
-   
-   if (!setting) {
-     alert('Bitte wähle eine Location aus.');
-     return false;
-   }
+    if (extras.length === 0) {
+      alert('Bitte wähle mindestens ein Extra aus.');
+      return false;
+    }
+    
+    if (!setting) {
+      alert('Bitte wähle eine Location aus.');
+      return false;
+    }
 
-   if (!videoType) {
-     alert('Bitte wähle einen Video-Typ aus.');
-     return false;
-   }
+    if (!videoType) {
+      alert('Bitte wähle einen Video-Typ aus.');
+      return false;
+    }
 
-   if (!deliveryTime) {
-     alert('Bitte wähle eine Lieferzeit aus.');
-     return false;
-   }
+    if (!deliveryTime) {
+      alert('Bitte wähle eine Lieferzeit aus.');
+      return false;
+    }
 
-   return true;
- };
+    return true;
+  };
 
- const handleSubmit = async () => {
-   if (!validateOrder()) {
-     return;
-   }
- 
-   try {
-     const response = await fetch('/api/video-request', {
-       method: 'POST',
-       headers: {
-         'Content-Type': 'application/json',
-       },
-       body: JSON.stringify({
-         email,
-         duration,
-         is4K,
-         extras,
-         language,
-         setting,
-         videoType,
-         deliveryTime,
-         appreciation,
-         totalPrice: calculatePrice()
-       }),
-     });
- 
-     const data = await response.json();
- 
-     if (response.ok) {
-       alert('Vielen Dank für deine Anfrage! Wir werden uns zeitnah bei dir melden.');
-       // Form zurücksetzen
-       setExtras([]);
-       setIs4K(false);
-       setAppreciation('');
-       setEmail('');
-     } else {
-       throw new Error(data.message || 'Ein Fehler ist aufgetreten');
-     }
-   } catch (error) {
-     console.error('Request error:', error);
-     alert('Ein Fehler ist aufgetreten. Bitte versuche es später erneut.');
-   }
- };
+  const resetForm = () => {
+    setDuration(10);
+    setIs4K(false);
+    setExtras([]);
+    setLanguage('Deutsch');
+    setSetting('Bedroom');
+    setVideoType('Portrait');
+    setDeliveryTime('1 Week');
+    setAppreciation('');
+    setEmail('');
+  };
 
+  const handleSubmit = async () => {
+    if (!validateOrder()) {
+      return;
+    }
+  
+    try {
+      const response = await fetch('/api/video-request', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          email,
+          duration,
+          is4K,
+          extras,
+          language,
+          setting,
+          videoType,
+          deliveryTime,
+          appreciation,
+          totalPrice: calculatePrice()
+        }),
+      });
+  
+      const data = await response.json();
+  
+      if (response.ok) {
+        alert('Vielen Dank für deine Anfrage! Wir werden uns zeitnah bei dir melden.');
+        resetForm();
+      } else {
+        throw new Error(data.message || 'Ein Fehler ist aufgetreten');
+      }
+    } catch (error) {
+      console.error('Request error:', error);
+      alert('Ein Fehler ist aufgetreten. Bitte versuche es später erneut.');
+    }
+  };
   return (
     <div className="min-h-screen bg-black py-10">
       <div className="max-w-7xl mx-auto px-4">

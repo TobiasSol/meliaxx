@@ -22,7 +22,7 @@ export default async function handler(req, res) {
           <li><strong>Video-Typ:</strong> ${videoType}</li>
           <li><strong>Lieferzeit:</strong> ${deliveryTime}</li>
           <li><strong>Extras:</strong> ${extras.join(', ')}</li>
-          <li><strong>Appreciation:</strong> ${appreciation || 'Keine'}</li>
+          ${appreciation ? `<li><strong>Appreciation:</strong> ${appreciation}</li>` : ''}
         </ul>
         <p><strong>Gesamtpreis:</strong> ${totalPrice}€</p>
         <p>Zeitpunkt der Anfrage: ${new Date().toLocaleString('de-DE')}</p>
@@ -32,7 +32,7 @@ export default async function handler(req, res) {
     if (result.success) {
       res.status(200).json({ message: 'Anfrage erfolgreich gesendet' });
     } else {
-      throw new Error('Failed to send email');
+      throw new Error(result.error || 'Failed to send email');
     }
   } catch (error) {
     console.error('Video request error:', error);

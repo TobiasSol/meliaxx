@@ -1,167 +1,131 @@
 import { useState } from "react";
 
-
 export default function VideoCalculator() {
-  const [duration, setDuration] = useState(10);
-  const [is4K, setIs4K] = useState(false);
-  const [extras, setExtras] = useState([]);
-  const [language, setLanguage] = useState('Deutsch');
-  const [setting, setSetting] = useState('Bedroom');
-  const [videoType, setVideoType] = useState('Portrait');
-  const [deliveryTime, setDeliveryTime] = useState('1 Week');
-  const [appreciation, setAppreciation] = useState('');
+ const [duration, setDuration] = useState(10);
+ const [is4K, setIs4K] = useState(false);
+ const [extras, setExtras] = useState([]);
+ const [language, setLanguage] = useState('Deutsch');
+ const [setting, setSetting] = useState('Bedroom');
+ const [videoType, setVideoType] = useState('Portrait');
+ const [deliveryTime, setDeliveryTime] = useState('1 Week');
+ const [appreciation, setAppreciation] = useState('');
+ const [email, setEmail] = useState('');
 
-  const calculatePrice = () => {
-    let basePrice = duration === 10 ? 200 : 340;
-    let additionalCosts = 0;
-    
-    // Resolution
-    if (is4K) additionalCosts += 20;
-    
-    // Extras
-    const extraPrices = {
-      'Say your name': 15,
-      'Dirtytalk': 20,
-      'Twerking': 25,
-      'Feetplay': 25,
-      'Blowjob Dildo': 100,
-      'Fingering': 150,
-      'Dildo Play Pussy': 200,
-      'Titjob': 75,
-      'Use Oil': 50,
-      'Striptease': 100,
-      'Orgasm': 100
-    };
-    
-    extras.forEach(extra => {
-      additionalCosts += extraPrices[extra] || 0;
-    });
+ const calculatePrice = () => {
+   let basePrice = duration === 10 ? 200 : 340;
+   let additionalCosts = 0;
+   
+   if (is4K) additionalCosts += 20;
+   
+   const extraPrices = {
+     'Say your name': 15,
+     'Dirtytalk': 20,
+     'Twerking': 25,
+     'Feetplay': 25,
+     'Blowjob Dildo': 100,
+     'Fingering': 150,
+     'Dildo Play Pussy': 200,
+     'Titjob': 75,
+     'Use Oil': 50,
+     'Striptease': 100,
+     'Orgasm': 100
+   };
+   
+   extras.forEach(extra => {
+     additionalCosts += extraPrices[extra] || 0;
+   });
 
-    // Setting
-    const settingPrices = {
-      'Shower': 10,
-      'Jaccuzi': 10,
-      'Car': 15
-    };
-    additionalCosts += settingPrices[setting] || 0;
+   const settingPrices = {
+     'Shower': 10,
+     'Jaccuzi': 10,
+     'Car': 15
+   };
+   additionalCosts += settingPrices[setting] || 0;
 
-    // Delivery Time
-    if (deliveryTime === '48 hours') additionalCosts += 20;
+   if (deliveryTime === '48 hours') additionalCosts += 20;
 
-    // Appreciation
-    const appreciationPrices = {
-      'Show some Love': 20,
-      'I Like you': 100,
-      'I Cant wait for the Video': 150,
-      'I LOVE YOU': 500
-    };
-    additionalCosts += appreciationPrices[appreciation] || 0;
+   const appreciationPrices = {
+     'Show some Love': 20,
+     'I Like you': 100,
+     'I Cant wait for the Video': 150,
+     'I LOVE YOU': 500
+   };
+   additionalCosts += appreciationPrices[appreciation] || 0;
 
-    return basePrice + additionalCosts;
-  };
+   return basePrice + additionalCosts;
+ };
 
-  const handleCheckout = async () => {
-    const stripe = await stripePromise;
-    
-    const response = await fetch('/api/checkout', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({
-        duration,
-        is4K,
-        extras,
-        language,
-        setting,
-        videoType,
-        deliveryTime,
-        appreciation,
-        totalPrice: calculatePrice()
-      }),
-    });
+ const validateOrder = () => {
+   if (!email || !email.includes('@')) {
+     alert('Bitte gib eine gültige E-Mail-Adresse ein.');
+     return false;
+   }
 
-    const session = await response.json();
-    
-    if (session.error) {
-      alert('Fehler beim Erstellen der Bestellung. Bitte versuchen Sie es später erneut.');
-      return;
-    }
+   if (extras.length === 0) {
+     alert('Bitte wähle mindestens ein Extra aus.');
+     return false;
+   }
+   
+   if (!setting) {
+     alert('Bitte wähle eine Location aus.');
+     return false;
+   }
 
-    const result = await stripe.redirectToCheckout({
-      sessionId: session.id,
-    });
+   if (!videoType) {
+     alert('Bitte wähle einen Video-Typ aus.');
+     return false;
+   }
 
-    if (result.error) {
-      alert('Fehler beim Weiterleiten zur Bezahlseite. Bitte versuchen Sie es später erneut.');
-    }
-  };
+   if (!deliveryTime) {
+     alert('Bitte wähle eine Lieferzeit aus.');
+     return false;
+   }
 
-  const validateOrder = () => {
-    if (extras.length === 0) {
-      alert('Bitte wählen Sie mindestens ein Extra aus.');
-      return false;
-    }
-    
-    if (!setting) {
-      alert('Bitte wählen Sie eine Location aus.');
-      return false;
-    }
+   return true;
+ };
 
-    if (!videoType) {
-      alert('Bitte wählen Sie einen Video-Typ aus.');
-      return false;
-    }
-
-    if (!deliveryTime) {
-      alert('Bitte wählen Sie eine Lieferzeit aus.');
-      return false;
-    }
-
-    return true;
-  };
-
-  const handleSubmit = async () => {
-    if (!validateOrder()) {
-      return;
-    }
-  
-    try {
-      const response = await fetch('/api/video-request', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          duration,
-          is4K,
-          extras,
-          language,
-          setting,
-          videoType,
-          deliveryTime,
-          appreciation,
-          totalPrice: calculatePrice()
-        }),
-      });
-  
-      const data = await response.json();
-  
-      if (response.ok) {
-        alert('Vielen Dank für deine Anfrage! Wir werden uns zeitnah bei dir melden.');
-        // Optional: Form zurücksetzen
-        setExtras([]);
-        setIs4K(false);
-        setAppreciation('');
-        // ... weitere Resets
-      } else {
-        throw new Error(data.message || 'Ein Fehler ist aufgetreten');
-      }
-    } catch (error) {
-      console.error('Request error:', error);
-      alert('Ein Fehler ist aufgetreten. Bitte versuche es später erneut.');
-    }
-  };
+ const handleSubmit = async () => {
+   if (!validateOrder()) {
+     return;
+   }
+ 
+   try {
+     const response = await fetch('/api/video-request', {
+       method: 'POST',
+       headers: {
+         'Content-Type': 'application/json',
+       },
+       body: JSON.stringify({
+         email,
+         duration,
+         is4K,
+         extras,
+         language,
+         setting,
+         videoType,
+         deliveryTime,
+         appreciation,
+         totalPrice: calculatePrice()
+       }),
+     });
+ 
+     const data = await response.json();
+ 
+     if (response.ok) {
+       alert('Vielen Dank für deine Anfrage! Wir werden uns zeitnah bei dir melden.');
+       // Form zurücksetzen
+       setExtras([]);
+       setIs4K(false);
+       setAppreciation('');
+       setEmail('');
+     } else {
+       throw new Error(data.message || 'Ein Fehler ist aufgetreten');
+     }
+   } catch (error) {
+     console.error('Request error:', error);
+     alert('Ein Fehler ist aufgetreten. Bitte versuche es später erneut.');
+   }
+ };
 
   return (
     <div className="min-h-screen bg-black py-10">
@@ -460,6 +424,31 @@ export default function VideoCalculator() {
                 </div>
               </div>
             </div>
+
+{/* Email Field */}
+<div className="bg-gradient-to-b from-[#d0b48f] to-[#e5d4bc] rounded-xl p-3 shadow-lg">
+  <label className="block text-xl font-black text-gray-900 mb-4 flex items-center">
+    <div className="flex items-center justify-center w-8 h-8 bg-gray-900 text-[#d0b48f] rounded-full mr-2 flex-shrink-0">
+      <span className="text-base">6</span>
+    </div>
+    Deine E-Mail
+  </label>
+  <div className="space-y-4">
+    <div className="flex flex-col space-y-1">
+      <input
+        type="email"
+        value={email}
+        onChange={(e) => setEmail(e.target.value)}
+        placeholder="Deine E-Mail für Rückfragen"
+        className="p-4 rounded-lg border-2 border-gray-800 bg-white text-gray-900"
+        required
+      />
+    </div>
+  </div>
+</div>
+
+
+
 
             {/* Checkout Button */}
             <div className="bg-gradient-to-b from-[#d0b48f] to-[#e5d4bc] rounded-xl p-3 shadow-lg">

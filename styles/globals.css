@@ -115,3 +115,75 @@ input[type="checkbox"]:checked {
 .animate-ping {
   animation: ping 1.5s cubic-bezier(0, 0, 0.2, 1) infinite;
 }
+
+@keyframes shineButton {
+  0% {
+    transform: translateX(-100%) skewX(-45deg);
+  }
+  100% {
+    transform: translateX(200%) skewX(-45deg);
+  }
+}
+
+.animate-shine-button > div {
+  animation: shineButton 3s infinite;
+  opacity: 0.3;
+}
+
+@keyframes shineBanner {
+  0% {
+    transform: translateX(-100%) skewX(-45deg);
+    opacity: 0;
+  }
+  25% {
+    opacity: 0.3;
+  }
+  50% {
+    opacity: 0.5;
+  }
+  75% {
+    opacity: 0.3;
+  }
+  100% {
+    transform: translateX(200%) skewX(-45deg);
+    opacity: 0;
+  }
+}
+
+.animate-shine-banner > div {
+  animation: shineBanner 5s ease-in-out infinite;
+  background: linear-gradient(90deg, 
+    transparent,
+    rgba(227, 203, 170, 0.1),
+    rgba(227, 203, 170, 0.2),
+    rgba(255, 255, 255, 0.3),
+    rgba(227, 203, 170, 0.2),
+    rgba(227, 203, 170, 0.1),
+    transparent
+  );
+}
+
+@keyframes shineHero {
+  0% {
+    transform: translateX(-100%) skewX(-45deg);
+    opacity: 0;
+  }
+  50% {
+    opacity: 0.3;
+  }
+  100% {
+    transform: translateX(200%) skewX(-45deg);
+    opacity: 0;
+  }
+}
+
+.animate-shine-hero > div {
+  animation: shineHero 8s ease-in-out infinite;
+  background: linear-gradient(90deg, 
+    transparent,
+    rgba(227, 203, 170, 0.05),
+    rgba(255, 255, 255, 0.1),
+    rgba(227, 203, 170, 0.05),
+    transparent
+  );
+}

@@ -21,7 +21,7 @@ const OnlyFansBanner = () => {
       {/* Pfeil-Button mit OnlyFans Logo */}
       <button
         onClick={toggleBanner}
-        className={`fixed md:left-[5%] md:top-[40%] left-0 top-[80px] md:-translate-y-1/3 z-50 bg-black border-2 border-[#e3cbaa] text-[#e3cbaa] rounded-r-lg hover:bg-[#e3cbaa] hover:text-black transition-all duration-300 flex items-center gap-3 pr-4 pl-3 py-3 ${
+        className={`fixed md:left-[3%] md:top-[40%] left-0 top-[80px] md:-translate-y-1/3 z-50 bg-black border-2 border-[#e3cbaa] text-[#e3cbaa] rounded-r-lg hover:bg-[#e3cbaa] hover:text-black transition-all duration-300 flex items-center gap-3 pr-4 pl-3 py-3 ${
           isVisible ? 'hidden' : 'block'
         }`}
       >
@@ -55,7 +55,7 @@ const OnlyFansBanner = () => {
 
       {/* Banner */}
       <div
-        className={`fixed left-[5%] top-[40%] max-[460px]:top-[50%] -translate-y-1/3 z-50 transition-transform duration-700 ease-out ${
+        className={`fixed left-[3%] top-[40%] max-[460px]:top-[50%] -translate-y-1/3 z-50 transition-transform duration-700 ease-out ${
           isVisible ? 'translate-x-0' : '-translate-x-[105%]'
         }`}
       >
@@ -82,7 +82,12 @@ const OnlyFansBanner = () => {
             <div className="absolute inset-0 rounded-r-xl bg-blue-300 opacity-25 blur-xl animate-neonBorder" />
             
             {/* Hauptbanner für Mobile */}
-            <div className="relative w-[400px] h-[650px] bg-gradient-to-b from-black via-black to-[#111] rounded-r-xl border-2 border-[#e3cbaa] shadow-2xl p-8">
+            <div className="relative w-[400px] h-[650px] bg-gradient-to-b from-black via-black to-[#111] rounded-r-xl border-2 border-[#e3cbaa] shadow-2xl p-8 overflow-hidden">
+              {/* Glanz-Animation über den gesamten Banner */}
+              <div className="absolute inset-0 animate-shine-banner pointer-events-none">
+                <div className="absolute inset-0 bg-gradient-to-r from-transparent via-[rgba(227,203,170,0.1)] to-transparent skew-x-[-45deg] translate-x-[-100%]" />
+              </div>
+
               {/* Dekorative Ecken */}
               <div className="absolute top-2 left-2 w-8 h-8 border-t-2 border-l-2 border-[#e3cbaa]" />
               <div className="absolute top-2 right-2 w-8 h-8 border-t-2 border-r-2 border-[#e3cbaa]" />
@@ -121,9 +126,9 @@ const OnlyFansBanner = () => {
               </div>
               
               {/* Rechter Content - aufgeteilt in zwei Bereiche */}
-              <div className="absolute right-8 top-[45%] w-[180px]">
+              <div className="absolute right-8 top-[35%] w-[180px]">
                 {/* Name und Alter in einer Reihe */}
-                <div className="text-center mb-4 flex items-baseline justify-center gap-1">
+                <div className="text-center mb-2 flex items-baseline justify-center gap-1">
                   <h4 className="text-[#e3cbaa] text-2xl font-bold font-playfair tracking-wider inline-flex items-baseline m-0"
                       style={{
                         textShadow: '0 0 10px rgba(227, 203, 170, 0.5)'
@@ -134,8 +139,8 @@ const OnlyFansBanner = () => {
                   <span className="text-[#e3cbaa] text-2xl font-bold leading-none">23</span>
                 </div>
 
-                {/* Online Status */}
-                <div className="flex items-center justify-center gap-2 mb-6">
+                {/* Online Status - linksbündig */}
+                <div className="flex items-center gap-2 mb-6 justify-start pl-2">
                   <div className="relative">
                     <div className="w-3 h-3 bg-green-500 rounded-full"></div>
                     <div className="absolute inset-0 bg-green-500 rounded-full animate-ping opacity-75"></div>
@@ -154,16 +159,21 @@ const OnlyFansBanner = () => {
                   </span>
                 </div>
 
-                {/* Rabatt Text */}
+                {/* Rabatt Text mit Zusatzinfo */}
                 <div className="transform rotate-[-5deg] relative">
                   <div className="absolute inset-0 bg-[#e3cbaa] blur-md opacity-20" />
-                  <div className="relative bg-gradient-to-r from-[#e3cbaa] via-[#d0b48f] to-[#e3cbaa] text-black py-2 px-4 rounded-lg text-lg font-bold shadow-xl whitespace-nowrap">
-                    Jetzt 70% günstiger!
+                  <div className="flex flex-col items-center">
+                    <div className="relative bg-gradient-to-r from-[#e3cbaa] via-[#d0b48f] to-[#e3cbaa] text-black py-2 px-4 rounded-lg text-lg font-bold shadow-xl whitespace-nowrap mb-2">
+                      Jetzt 60% günstiger!
+                    </div>
+                    <span className="text-[#e3cbaa] text-sm font-semibold tracking-wide">
+                      Nur Kreditkarte
+                    </span>
                   </div>
                 </div>
               </div>
 
-              {/* Chat Button - kleiner und rechts */}
+              {/* Chat Button mit Glanz-Animation */}
               <div className="absolute left-[47%] bottom-20 w-[260px]">
                 <a 
                   href="https://onlyfans.com/meliax"
@@ -173,14 +183,22 @@ const OnlyFansBanner = () => {
                 >
                   <div className="absolute inset-0 bg-[#e3cbaa] transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left" />
                   <span className="relative z-10">JETZT CHATTEN</span>
-                  <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 bg-gradient-to-r from-transparent via-white to-transparent blur-lg" />
+                  {/* Glanz-Animation */}
+                  <div className="absolute inset-0 animate-shine-button">
+                    <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white to-transparent skew-x-[-45deg] translate-x-[-100%]" />
+                  </div>
                 </a>
               </div>
             </div>
           </div>
 
           {/* Desktop Banner (nur über 460px) */}
-          <div className="max-[460px]:hidden relative w-[400px] h-[650px] bg-gradient-to-b from-black via-black to-[#111] rounded-r-xl border-2 border-[#e3cbaa] shadow-2xl p-8">
+          <div className="max-[460px]:hidden relative w-[400px] h-[650px] bg-gradient-to-b from-black via-black to-[#111] rounded-r-xl border-2 border-[#e3cbaa] shadow-2xl p-8 overflow-hidden">
+            {/* Glanz-Animation über den gesamten Banner */}
+            <div className="absolute inset-0 animate-shine-banner pointer-events-none">
+              <div className="absolute inset-0 bg-gradient-to-r from-transparent via-[rgba(227,203,170,0.1)] to-transparent skew-x-[-45deg] translate-x-[-100%]" />
+            </div>
+
             {/* Dekorative Ecken */}
             <div className="absolute top-2 left-2 w-8 h-8 border-t-2 border-l-2 border-[#e3cbaa]" />
             <div className="absolute top-2 right-2 w-8 h-8 border-t-2 border-r-2 border-[#e3cbaa]" />
@@ -219,9 +237,9 @@ const OnlyFansBanner = () => {
             </div>
             
             {/* Rechter Content - aufgeteilt in zwei Bereiche */}
-            <div className="absolute right-8 top-[45%] w-[180px]">
+            <div className="absolute right-8 top-[35%] w-[180px]">
               {/* Name und Alter in einer Reihe */}
-              <div className="text-center mb-4 flex items-baseline justify-center gap-1">
+              <div className="text-center mb-0 flex items-baseline justify-center gap-1">
                 <h4 className="text-[#e3cbaa] text-2xl font-bold font-playfair tracking-wider inline-flex items-baseline m-0"
                     style={{
                       textShadow: '0 0 10px rgba(227, 203, 170, 0.5)'
@@ -232,8 +250,8 @@ const OnlyFansBanner = () => {
                 <span className="text-[#e3cbaa] text-2xl font-bold leading-none">23</span>
               </div>
 
-              {/* Online Status */}
-              <div className="flex items-center justify-center gap-2 mb-6">
+              {/* Online Status - linksbündig */}
+              <div className="flex items-center gap-2 mb-12 justify-start pl-5">
                 <div className="relative">
                   <div className="w-3 h-3 bg-green-500 rounded-full"></div>
                   <div className="absolute inset-0 bg-green-500 rounded-full animate-ping opacity-75"></div>
@@ -252,26 +270,34 @@ const OnlyFansBanner = () => {
                 </span>
               </div>
 
-              {/* Rabatt Text */}
+              {/* Rabatt Text mit Zusatzinfo */}
               <div className="transform rotate-[-5deg] relative">
                 <div className="absolute inset-0 bg-[#e3cbaa] blur-md opacity-20" />
-                <div className="relative bg-gradient-to-r from-[#e3cbaa] via-[#d0b48f] to-[#e3cbaa] text-black py-2 px-4 rounded-lg text-lg font-bold shadow-xl whitespace-nowrap">
-                  Jetzt 70% günstiger!
+                <div className="flex flex-col items-center">
+                  <div className="relative bg-gradient-to-r from-[#e3cbaa] via-[#d0b48f] to-[#e3cbaa] text-black py-2 px-4 rounded-lg text-lg font-bold shadow-xl whitespace-nowrap mb-2">
+                    Jetzt 60% günstiger!
+                  </div>
+                  <span className="text-[#e3cbaa] text-sm font-semibold tracking-wide">
+                    Nur Kreditkarte
+                  </span>
                 </div>
               </div>
             </div>
 
-            {/* Chat Button - kleiner und rechts */}
+            {/* Chat Button mit Glanz-Animation */}
             <div className="absolute left-[47%] bottom-20 w-[260px]">
               <a 
                 href="https://onlyfans.com/meliax"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="relative overflow-hidden bg-transparent border-2 border-[#e3cbaa] text-[#e3cbaa] hover:text-black font-bold py-2 px-4 rounded-full transition-all duration-300 transform hover:scale-105 shadow-lg text-base group inline-flex items-center justify-center"
+                className="relative overflow-hidden bg-transparent border-2 border-[#e3cbaa] text-[#e3cbaa] hover:text-black font-bold py-3 px-6 rounded-full transition-all duration-300 transform hover:scale-105 shadow-lg text-base group inline-flex items-center justify-center"
               >
                 <div className="absolute inset-0 bg-[#e3cbaa] transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left" />
                 <span className="relative z-10">JETZT CHATTEN</span>
-                <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 bg-gradient-to-r from-transparent via-white to-transparent blur-lg" />
+                {/* Glanz-Animation */}
+                <div className="absolute inset-0 animate-shine-button">
+                  <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white to-transparent skew-x-[-45deg] translate-x-[-100%]" />
+                </div>
               </a>
             </div>
           </div>

@@ -155,8 +155,8 @@ export default function Home() {
         
         <main className="container mx-auto px-4 py-8">
           {/* Hero Section */}
-          <section className="mb-28 text-center relative h-screen">
-            <div className="absolute inset-2  rounded-lg z-20" />
+          <section className="mb-28 text-center relative h-screen overflow-hidden">
+            <div className="absolute inset-2 rounded-lg z-20" />
             <div 
               className="absolute inset-0 bg-[url('/videos/header.jpg')] bg-cover bg-center w-full h-full"
               style={{
@@ -164,6 +164,9 @@ export default function Home() {
                 filter: "brightness(0.3)"
               }}
             />
+            <div className="absolute inset-0 z-[15] animate-shine-hero pointer-events-none">
+              <div className="absolute inset-0 bg-gradient-to-r from-transparent via-[rgba(227,203,170,0.05)] to-transparent skew-x-[-45deg] translate-x-[-100%]" />
+            </div>
             <div className="relative z-10 h-full flex flex-col items-center justify-center">
               <h1 className="text-5xl md:text-7xl font-playfair text-[#e3cbaa] mb-4">
                 MELIAX

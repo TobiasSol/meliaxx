@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import Image from 'next/image';
 
-const OnlyFansBanner = ({ onVisibilityChange }) => {
+const MaloumBanner = ({ ofBannerVisible }) => {
   const [isVisible, setIsVisible] = useState(false);
 
   useEffect(() => {
@@ -13,35 +13,22 @@ const OnlyFansBanner = ({ onVisibilityChange }) => {
   }, []);
 
   const toggleBanner = () => {
-    const newVisibility = !isVisible;
-    setIsVisible(newVisibility);
-    onVisibilityChange?.(newVisibility);
+    setIsVisible(!isVisible);
   };
 
   return (
     <>
-      {/* Pfeil-Button mit OnlyFans Logo */}
+      {/* Pfeil-Button mit Maloum Logo */}
       <button
         onClick={toggleBanner}
-        className={`fixed md:left-[3%] md:top-[40%] left-0 top-[80px] md:-translate-y-1/3 z-50 bg-black border-2 border-[#e3cbaa] text-[#e3cbaa] rounded-r-lg hover:bg-[#e3cbaa] hover:text-black transition-all duration-300 flex items-center gap-3 pr-4 pl-3 py-3 ${
+        className={`fixed right-0 md:right-[3%] md:top-[40%] max-[768px]:hidden md:-translate-y-1/3 z-50 bg-black border-2 border-[#e3cbaa] text-[#e3cbaa] rounded-l-lg hover:bg-[#e3cbaa] hover:text-black transition-all duration-300 flex items-center gap-3 pl-4 pr-3 py-3 ${
           isVisible ? 'hidden' : 'block'
         }`}
       >
-        {/* OnlyFans Logo */}
-        <div className="relative w-24 md:w-32 h-8 md:h-10">
-          <Image
-            src="/OFbanner/OnlyFans_logo.png"
-            alt="OnlyFans Logo"
-            fill
-            className="object-contain"
-            priority
-          />
-        </div>
-        
-        {/* Pfeil Icon */}
+        {/* Pfeil Icon - nach links zeigend */}
         <svg
           xmlns="http://www.w3.org/2000/svg"
-          className="h-8 w-8 md:h-10 md:w-10"
+          className="h-8 w-8 md:h-10 md:w-10 rotate-180"
           fill="none"
           viewBox="0 0 24 24"
           stroke="currentColor"
@@ -53,38 +40,49 @@ const OnlyFansBanner = ({ onVisibilityChange }) => {
             d="M9 5l7 7-7 7"
           />
         </svg>
+
+        {/* Maloum Logo */}
+        <div className="relative w-24 md:w-32 h-8 md:h-10">
+          <Image
+            src="/OFbanner/maloum.png"
+            alt="Maloum Logo"
+            fill
+            className="object-contain"
+            priority
+          />
+        </div>
       </button>
 
       {/* Banner */}
       <div
-        className={`fixed left-[3%] top-[40%] max-[460px]:top-[50%] -translate-y-1/3 z-50 transition-transform duration-700 ease-out ${
-          isVisible ? 'translate-x-0' : '-translate-x-[105%]'
+        className={`fixed right-[3%] md:top-[40%] max-[768px]:hidden -translate-y-1/3 z-50 transition-all duration-700 ease-out ${
+          isVisible ? 'translate-x-0' : 'translate-x-[105%]'
         }`}
       >
         <div className="relative">
-          {/* Schließen Button */}
+          {/* Schließen Button - links statt rechts */}
           <button 
             onClick={toggleBanner}
-            className="absolute -right-10 -top-10 max-[460px]:right-[80px] max-[460px]:top-[0px] w-8 h-8 max-[460px]:w-6 max-[460px]:h-6 rounded-full bg-black border-2 border-[#e3cbaa] text-[#e3cbaa] flex items-center justify-center hover:bg-[#e3cbaa] hover:text-black transition-all duration-300 group z-50"
+            className="absolute -left-10 -top-10 max-[460px]:left-[80px] max-[460px]:top-[0px] w-8 h-8 max-[460px]:w-6 max-[460px]:h-6 rounded-full bg-black border-2 border-[#e3cbaa] text-[#e3cbaa] flex items-center justify-center hover:bg-[#e3cbaa] hover:text-black transition-all duration-300 group z-50"
           >
             <span className="transform group-hover:rotate-180 transition-transform duration-300 text-2xl max-[460px]:text-xl">×</span>
           </button>
 
           {/* Desktop Neon-Rahmen (nur über 460px) */}
           <div className="max-[460px]:hidden">
-            <div className="absolute -inset-1 rounded-r-xl bg-blue-500 opacity-75 blur-md animate-neonBorder" />
-            <div className="absolute -inset-1.5 rounded-r-xl bg-blue-400 opacity-50 blur-lg animate-neonBorder" />
-            <div className="absolute -inset-2 rounded-r-xl bg-blue-300 opacity-25 blur-xl animate-neonBorder" />
+            <div className="absolute -inset-1 rounded-l-xl bg-orange-500 opacity-75 blur-md animate-neonBorder" />
+            <div className="absolute -inset-1.5 rounded-l-xl bg-orange-400 opacity-50 blur-lg animate-neonBorder" />
+            <div className="absolute -inset-2 rounded-l-xl bg-orange-300 opacity-25 blur-xl animate-neonBorder" />
           </div>
 
           {/* Mobile Container mit Neon-Effekt (nur unter 460px) */}
-          <div className="min-[461px]:hidden relative scale-75 origin-top-left">
-            <div className="absolute inset-0 rounded-r-xl bg-blue-500 opacity-75 blur-md animate-neonBorder" />
-            <div className="absolute inset-0 rounded-r-xl bg-blue-400 opacity-50 blur-lg animate-neonBorder" />
-            <div className="absolute inset-0 rounded-r-xl bg-blue-300 opacity-25 blur-xl animate-neonBorder" />
+          <div className="min-[461px]:hidden relative scale-75 origin-top-right">
+            <div className="absolute inset-0 rounded-l-xl bg-orange-500 opacity-75 blur-md animate-neonBorder" />
+            <div className="absolute inset-0 rounded-l-xl bg-orange-400 opacity-50 blur-lg animate-neonBorder" />
+            <div className="absolute inset-0 rounded-l-xl bg-orange-300 opacity-25 blur-xl animate-neonBorder" />
             
             {/* Hauptbanner für Mobile */}
-            <div className="relative w-[400px] h-[650px] bg-gradient-to-b from-black via-black to-[#111] rounded-r-xl border-2 border-[#e3cbaa] shadow-2xl p-8 overflow-hidden">
+            <div className="relative w-[400px] h-[650px] bg-gradient-to-b from-black via-black to-[#111] rounded-l-xl border-2 border-[#e3cbaa] shadow-2xl p-8 overflow-hidden">
               {/* Glanz-Animation über den gesamten Banner */}
               <div className="absolute inset-0 animate-shine-banner pointer-events-none">
                 <div className="absolute inset-0 bg-gradient-to-r from-transparent via-[rgba(227,203,170,0.1)] to-transparent skew-x-[-45deg] translate-x-[-100%]" />
@@ -103,12 +101,12 @@ const OnlyFansBanner = ({ onVisibilityChange }) => {
                   JETZT GEILEN SEXCHAT MIT MIR !
                 </h3>
 
-                {/* OF Logo mit Glanz-Effekt */}
+                {/* Maloum Logo */}
                 <div className="relative w-48 h-16 transform hover:scale-105 transition-transform duration-300 -mt-6">
                   <div className="absolute inset-0 bg-gradient-to-r from-transparent via-[#e3cbaa20] to-transparent animate-shine" />
                   <Image
-                    src="/OFbanner/OnlyFans_logo.png"
-                    alt="OnlyFans Logo"
+                    src="/OFbanner/maloum.png"
+                    alt="Maloum Logo"
                     fill
                     className="object-contain"
                     priority
@@ -116,21 +114,21 @@ const OnlyFansBanner = ({ onVisibilityChange }) => {
                 </div>
               </div>
 
-              {/* Melia Foto - links positioniert */}
-              <div className="absolute left-0 bottom-0 w-[250px] h-[80%]">
+              {/* Melia Foto - rechts positioniert und gespiegelt */}
+              <div className="absolute right-0 bottom-0 w-[250px] h-[80%]">
                 <Image
                   src="/OFbanner/melia.png"
                   alt="Melia"
                   fill
-                  className="object-contain object-left-bottom"
+                  className="object-contain object-right-bottom scale-x-[-1]"
                   priority
                 />
               </div>
               
-              {/* Rechter Content - aufgeteilt in zwei Bereiche */}
-              <div className="absolute right-8 top-[35%] w-[180px]">
+              {/* Linker Content */}
+              <div className="absolute left-8 top-[35%] w-[180px]">
                 {/* Name und Alter in einer Reihe */}
-                <div className="text-center mb-2 flex items-baseline justify-center gap-1">
+                <div className="text-center mb-0 flex items-baseline justify-center gap-1">
                   <h4 className="text-[#e3cbaa] text-2xl font-bold font-playfair tracking-wider inline-flex items-baseline m-0"
                       style={{
                         textShadow: '0 0 10px rgba(227, 203, 170, 0.5)'
@@ -141,8 +139,8 @@ const OnlyFansBanner = ({ onVisibilityChange }) => {
                   <span className="text-[#e3cbaa] text-2xl font-bold leading-none">23</span>
                 </div>
 
-                {/* Online Status - linksbündig */}
-                <div className="flex items-center gap-2 mb-6 justify-start pl-2">
+                {/* Online Status - rechtsbündig */}
+                <div className="flex items-center gap-2 mb-12 justify-start pl-5">
                   <div className="relative">
                     <div className="w-3 h-3 bg-green-500 rounded-full"></div>
                     <div className="absolute inset-0 bg-green-500 rounded-full animate-ping opacity-75"></div>
@@ -162,7 +160,7 @@ const OnlyFansBanner = ({ onVisibilityChange }) => {
                 </div>
 
                 {/* Rabatt Text mit Zusatzinfo */}
-                <div className="transform rotate-[-5deg] relative">
+                <div className="transform rotate-[5deg] relative">
                   <div className="absolute inset-0 bg-[#e3cbaa] blur-md opacity-20" />
                   <div className="flex flex-col items-center">
                     <div className="relative bg-gradient-to-r from-[#e3cbaa] via-[#d0b48f] to-[#e3cbaa] text-black py-2 px-4 rounded-lg text-lg font-bold shadow-xl whitespace-nowrap mb-2">
@@ -176,12 +174,12 @@ const OnlyFansBanner = ({ onVisibilityChange }) => {
               </div>
 
               {/* Chat Button mit Glanz-Animation */}
-              <div className="absolute left-[47%] bottom-20 w-[260px]">
+              <div className="absolute right-[47%] bottom-20 w-[260px]">
                 <a 
-                  href="https://onlyfans.com/meliax"
+                  href="https://app.maloum.com/creator/meliax"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="relative overflow-hidden bg-transparent border-2 border-[#e3cbaa] text-[#e3cbaa] hover:text-black font-bold py-2 px-4 rounded-full transition-all duration-300 transform hover:scale-105 shadow-lg text-base group inline-flex items-center justify-center"
+                  className="relative overflow-hidden bg-transparent border-2 border-[#e3cbaa] text-[#e3cbaa] hover:text-black font-bold py-3 px-6 rounded-full transition-all duration-300 transform hover:scale-105 shadow-lg text-base group inline-flex items-center justify-center"
                 >
                   <div className="absolute inset-0 bg-[#e3cbaa] transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left" />
                   <span className="relative z-10">JETZT CHATTEN</span>
@@ -195,7 +193,7 @@ const OnlyFansBanner = ({ onVisibilityChange }) => {
           </div>
 
           {/* Desktop Banner (nur über 460px) */}
-          <div className="max-[460px]:hidden relative w-[400px] h-[650px] bg-gradient-to-b from-black via-black to-[#111] rounded-r-xl border-2 border-[#e3cbaa] shadow-2xl p-8 overflow-hidden">
+          <div className="max-[460px]:hidden relative w-[400px] h-[650px] bg-gradient-to-b from-black via-black to-[#111] rounded-l-xl border-2 border-[#e3cbaa] shadow-2xl p-8 overflow-hidden">
             {/* Glanz-Animation über den gesamten Banner */}
             <div className="absolute inset-0 animate-shine-banner pointer-events-none">
               <div className="absolute inset-0 bg-gradient-to-r from-transparent via-[rgba(227,203,170,0.1)] to-transparent skew-x-[-45deg] translate-x-[-100%]" />
@@ -214,12 +212,12 @@ const OnlyFansBanner = ({ onVisibilityChange }) => {
                 JETZT GEILEN SEXCHAT MIT MIR !
               </h3>
 
-              {/* OF Logo mit Glanz-Effekt */}
+              {/* Maloum Logo */}
               <div className="relative w-48 h-16 transform hover:scale-105 transition-transform duration-300 -mt-6">
                 <div className="absolute inset-0 bg-gradient-to-r from-transparent via-[#e3cbaa20] to-transparent animate-shine" />
                 <Image
-                  src="/OFbanner/OnlyFans_logo.png"
-                  alt="OnlyFans Logo"
+                  src="/OFbanner/maloum.png"
+                  alt="Maloum Logo"
                   fill
                   className="object-contain"
                   priority
@@ -227,19 +225,19 @@ const OnlyFansBanner = ({ onVisibilityChange }) => {
               </div>
             </div>
 
-            {/* Melia Foto - links positioniert */}
-            <div className="absolute left-0 bottom-0 w-[250px] h-[80%]">
+            {/* Melia Foto - rechts positioniert und gespiegelt */}
+            <div className="absolute right-0 bottom-0 w-[250px] h-[80%]">
               <Image
                 src="/OFbanner/melia.png"
                 alt="Melia"
                 fill
-                className="object-contain object-left-bottom"
+                className="object-contain object-right-bottom scale-x-[-1]"
                 priority
               />
             </div>
             
-            {/* Rechter Content - aufgeteilt in zwei Bereiche */}
-            <div className="absolute right-8 top-[35%] w-[180px]">
+            {/* Linker Content */}
+            <div className="absolute left-8 top-[35%] w-[180px]">
               {/* Name und Alter in einer Reihe */}
               <div className="text-center mb-0 flex items-baseline justify-center gap-1">
                 <h4 className="text-[#e3cbaa] text-2xl font-bold font-playfair tracking-wider inline-flex items-baseline m-0"
@@ -252,7 +250,7 @@ const OnlyFansBanner = ({ onVisibilityChange }) => {
                 <span className="text-[#e3cbaa] text-2xl font-bold leading-none">23</span>
               </div>
 
-              {/* Online Status - linksbündig */}
+              {/* Online Status - rechtsbündig */}
               <div className="flex items-center gap-2 mb-12 justify-start pl-5">
                 <div className="relative">
                   <div className="w-3 h-3 bg-green-500 rounded-full"></div>
@@ -273,21 +271,21 @@ const OnlyFansBanner = ({ onVisibilityChange }) => {
               </div>
 
               {/* Rabatt Text mit Zusatzinfo */}
-              <div className="transform rotate-[-5deg] relative">
+              <div className="transform rotate-[5deg] relative">
                 <div className="absolute inset-0 bg-[#e3cbaa] blur-md opacity-20" />
                 <div className="flex flex-col items-center">
                   <div className="relative bg-gradient-to-r from-[#e3cbaa] via-[#d0b48f] to-[#e3cbaa] text-black py-2 px-4 rounded-lg text-lg font-bold shadow-xl whitespace-nowrap mb-2">
                     Jetzt 60% günstiger!
                   </div>
                   <span className="text-[#e3cbaa] text-sm font-semibold tracking-wide">
-                    Nur Kreditkarte
+                    PAYPAL
                   </span>
                 </div>
               </div>
             </div>
 
             {/* Chat Button mit Glanz-Animation */}
-            <div className="absolute left-[47%] bottom-20 w-[260px]">
+            <div className="absolute right-[27%] bottom-20 w-[260px]">
               <a 
                 href="https://onlyfans.com/meliax"
                 target="_blank"
@@ -309,4 +307,4 @@ const OnlyFansBanner = ({ onVisibilityChange }) => {
   );
 };
 
-export default OnlyFansBanner; 
+export default MaloumBanner; 

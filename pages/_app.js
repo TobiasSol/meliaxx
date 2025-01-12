@@ -8,6 +8,9 @@ function MyApp({ Component, pageProps }) {
     <>
       <Head>
         <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta name="theme-color" content="#000000" />
+        {/* Speziell für Safari auf iOS */}
+        <meta name="apple-mobile-web-app-status-bar-style" content="black" />
       </Head>
       <FontProvider>
         <AgeVerificationPreloader />

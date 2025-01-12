@@ -55,7 +55,7 @@ const OnlyFansBanner = () => {
 
       {/* Banner */}
       <div
-        className={`fixed left-[5%] top-[40%] -translate-y-1/3 z-50 transition-transform duration-700 ease-out ${
+        className={`fixed left-[5%] top-[40%] max-[460px]:top-[50%] -translate-y-1/3 z-50 transition-transform duration-700 ease-out ${
           isVisible ? 'translate-x-0' : '-translate-x-[105%]'
         }`}
       >

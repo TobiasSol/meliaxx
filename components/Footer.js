@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import Link from 'next/link';
-import { Instagram, Twitch, Twitter } from 'lucide-react';
+import { Instagram, Twitter } from 'lucide-react';
+import { FaTiktok } from 'react-icons/fa';
 
 export default function Footer() {
  const [email, setEmail] = useState('');
@@ -109,9 +110,15 @@ export default function Footer() {
          <div className="lg:pl-4">
            <h3 className="text-xl font-bold text-[#e3cbaa] mb-4">Social Media</h3>
            <div className="flex space-x-4">
-             <a href="https://www.instagram.com/me.lia.x/" target="_blank" rel="noopener noreferrer" className="text-[#d0b48f] hover:text-[#e3cbaa]"><Instagram size={24} /></a>
-             <a href="https://twitch.tv" target="_blank" rel="noopener noreferrer" className="text-[#d0b48f] hover:text-[#e3cbaa]"><Twitch size={24} /></a>
-             <a href="https://x.com/me_lia_x" target="_blank" rel="noopener noreferrer" className="text-[#d0b48f] hover:text-[#e3cbaa]"><Twitter size={24} /></a>
+             <a href="https://www.instagram.com/me.lia.x/" target="_blank" rel="noopener noreferrer" className="text-[#d0b48f] hover:text-[#e3cbaa]">
+               <Instagram size={24} />
+             </a>
+             <a href="https://www.tiktok.com/@me.lia.x" target="_blank" rel="noopener noreferrer" className="text-[#d0b48f] hover:text-[#e3cbaa]">
+               <FaTiktok size={24} />
+             </a>
+             <a href="https://x.com/me_lia_x" target="_blank" rel="noopener noreferrer" className="text-[#d0b48f] hover:text-[#e3cbaa]">
+               <Twitter size={24} />
+             </a>
            </div>
          </div>
 

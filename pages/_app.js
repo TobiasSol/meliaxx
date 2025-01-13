@@ -2,6 +2,7 @@ import '../styles/globals.css';
 import Head from 'next/head';
 import FontProvider from '../components/FontProvider';
 import AgeVerificationPreloader from '../components/AgeVerificationPreloader';
+import Script from 'next/script';
 
 function MyApp({ Component, pageProps }) {
   return (
@@ -12,6 +13,21 @@ function MyApp({ Component, pageProps }) {
         {/* Speziell für Safari auf iOS */}
         <meta name="apple-mobile-web-app-status-bar-style" content="black" />
       </Head>
+
+      <Script
+        src="https://www.googletagmanager.com/gtag/js?id=G-N9D5BB3PRT"
+        strategy="afterInteractive"
+      />
+      <Script id="google-analytics" strategy="afterInteractive">
+        {`
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+
+          gtag('config', 'G-N9D5BB3PRT');
+        `}
+      </Script>
+
       <FontProvider>
         <AgeVerificationPreloader />
         <Component {...pageProps} />

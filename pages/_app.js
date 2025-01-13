@@ -3,8 +3,13 @@ import Head from 'next/head';
 import FontProvider from '../components/FontProvider';
 import AgeVerificationPreloader from '../components/AgeVerificationPreloader';
 import Script from 'next/script';
+import OnlyFansBanner from '../components/OnlyFansBanner';
+import MaloumBanner from '../components/MaloumBanner';
+import { useState } from 'react';
 
 function MyApp({ Component, pageProps }) {
+  const [ofBannerVisible, setOfBannerVisible] = useState(false);
+
   return (
     <>
       <Head>
@@ -30,6 +35,8 @@ function MyApp({ Component, pageProps }) {
 
       <FontProvider>
         <AgeVerificationPreloader />
+        <OnlyFansBanner onVisibilityChange={setOfBannerVisible} />
+        <MaloumBanner ofBannerVisible={ofBannerVisible} />
         <Component {...pageProps} />
       </FontProvider>
     </>

@@ -178,7 +178,7 @@ const OnlyFansBanner = ({ onVisibilityChange }) => {
               {/* Chat Button mit Glanz-Animation */}
               <div className="absolute left-[47%] bottom-20 w-[260px]">
                 <a 
-                  href="https://onlyfans.com/meliax"
+                  href="https://onlyfans.com/meliax/c19"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="relative overflow-hidden bg-transparent border-2 border-[#e3cbaa] text-[#e3cbaa] hover:text-black font-bold py-2 px-4 rounded-full transition-all duration-300 transform hover:scale-105 shadow-lg text-base group inline-flex items-center justify-center"

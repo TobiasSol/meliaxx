@@ -6,15 +6,12 @@ import InstagramFeed from "../components/InstagramFeed";
 import Footer from "../components/Footer";
 import Image from 'next/image';
 import Head from 'next/head';
-import OnlyFansBanner from '../components/OnlyFansBanner';
-import MaloumBanner from '../components/MaloumBanner';
 
 export default function Home() {
   const [purchasedVideos, setPurchasedVideos] = useState([]);
   const [previewVideo, setPreviewVideo] = useState(null);
   const [adminVideos, setAdminVideos] = useState([]);
   const [loading, setLoading] = useState(true);
-  const [ofBannerVisible, setOfBannerVisible] = useState(false);
 
   useEffect(() => {
     fetchAdminVideos();
@@ -95,65 +92,63 @@ export default function Home() {
 
   return (
     <>
-  <Head>
-  <title>Meliax | Content Creator & Digital Artist</title>
-  
-  {/* Primary Meta Tags */}
-  <meta name="description" content="Willkommen bei Meliax - Ihrer exklusiven Content Creatorin und Digital Artist. Entdecken Sie einzigartige Videos, Bilder und digitale Kunst." />
-  <meta name="keywords" content="meliax, content creator, digital artist, exklusive inhalte, videos, tiktok" />
-  
-  {/* Open Graph / Facebook */}
-  <meta property="og:type" content="website" />
-  <meta property="og:url" content="https://meliaxx.de" />
-  <meta property="og:title" content="Meliax | Content Creator & Digital Artist" />
-  <meta property="og:description" content="Willkommen bei Meliax - Ihrer exklusiven Sexy Content Creator & Porn Artist. Entdecken Sie einzigartige Videos, Bilder und digitale Kunst." />
-  <meta property="og:image" content="https://meliaxx.de/videos/meliax.avif" />
-  <meta property="og:site_name" content="Meliax" />
-  
-  {/* Twitter */}
-  <meta property="twitter:card" content="summary_large_image" />
-  <meta property="twitter:url" content="https://meliaxx.de" />
-  <meta property="twitter:title" content="Meliax | Content Creator & Digital Artist" />
-  <meta property="twitter:description" content="Willkommen bei Meliax - Ihrer exklusiven Sexy Content Creator & Porn Artist. Entdecken Sie einzigartige Videos, Bilder und digitale Kunst." />
-  <meta property="twitter:image" content="https://meliaxx.de/videos/meliax.avif" />
-  
-  {/* Canonical URL */}
-  <link rel="canonical" href="https://meliaxx.de" />
-  
-  {/* Structured Data */}
-  <script
-    type="application/ld+json"
-    dangerouslySetInnerHTML={{
-      __html: JSON.stringify({
-        "@context": "https://schema.org",
-        "@type": "Person",
-        "@id": "https://meliaxx.de/#person",
-        "name": "Meliax",
-        "url": "https://meliaxx.de",
-        "image": "https://meliaxx.de/videos/meliax.avif",
-        "description": "Sexy Content Creator & Porn Artist",
-        "sameAs": [
-          "https://meliaxx.de",
-          "https://www.instagram.com/me.lia.x",
-          "https://www.twitch.tv",
-          "https://x.com/me_lia_x",
-          "https://www.tiktok.com/@me.lia.x"
-        ]
-      })
-    }}
-  />
-  
-  {/* Favicon */}
-  <link rel="icon" href="/favicon.ico" />
-  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
-  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
-  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
-  <link rel="manifest" href="/site.webmanifest" />
-</Head>
-<OnlyFansBanner onVisibilityChange={setOfBannerVisible} />
-<MaloumBanner ofBannerVisible={ofBannerVisible} />
+      <Head>
+        <title>Meliax | Exklusive Inhalte</title>
+        
+        {/* Primary Meta Tags */}
+        <meta name="description" content="Willkommen bei Meliax - Ihrer exklusiven Content Creatorin und Digital Artist. Entdecken Sie einzigartige Videos, Bilder und digitale Kunst." />
+        <meta name="keywords" content="meliax, content creator, digital artist, exklusive inhalte, videos, tiktok" />
+        
+        {/* Open Graph / Facebook */}
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="https://meliaxx.de" />
+        <meta property="og:title" content="Meliax | Content Creator & Digital Artist" />
+        <meta property="og:description" content="Willkommen bei Meliax - Ihrer exklusiven Sexy Content Creator & Porn Artist. Entdecken Sie einzigartige Videos, Bilder und digitale Kunst." />
+        <meta property="og:image" content="https://meliaxx.de/videos/meliax.avif" />
+        <meta property="og:site_name" content="Meliax" />
+        
+        {/* Twitter */}
+        <meta property="twitter:card" content="summary_large_image" />
+        <meta property="twitter:url" content="https://meliaxx.de" />
+        <meta property="twitter:title" content="Meliax | Content Creator & Digital Artist" />
+        <meta property="twitter:description" content="Willkommen bei Meliax - Ihrer exklusiven Sexy Content Creator & Porn Artist. Entdecken Sie einzigartige Videos, Bilder und digitale Kunst." />
+        <meta property="twitter:image" content="https://meliaxx.de/videos/meliax.avif" />
+        
+        {/* Canonical URL */}
+        <link rel="canonical" href="https://meliaxx.de" />
+        
+        {/* Structured Data */}
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "Person",
+              "@id": "https://meliaxx.de/#person",
+              "name": "Meliax",
+              "url": "https://meliaxx.de",
+              "image": "https://meliaxx.de/videos/meliax.avif",
+              "description": "Sexy Content Creator & Porn Artist",
+              "sameAs": [
+                "https://meliaxx.de",
+                "https://www.instagram.com/me.lia.x",
+                "https://www.twitch.tv",
+                "https://x.com/me_lia_x",
+                "https://www.tiktok.com/@me.lia.x"
+              ]
+            })
+          }}
+        />
+        
+        {/* Favicon */}
+        <link rel="icon" href="/favicon.ico" />
+        <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+        <link rel="manifest" href="/site.webmanifest" />
+      </Head>
 
-      <div className="min-h-screen bg-black text-white mt-12">
+      <div className="bg-black min-h-screen">
         <Header />
         
         <main className="container mx-auto px-4 py-8">

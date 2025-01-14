@@ -18,7 +18,7 @@ export default function Impressum() {
             Tepeleniou street 13, court 3, 3rd floor <br />
             8010, paphos <br />
             Cyprus <br />
-            Reg. Number: <br />
+           
 Reg. Number:<br />
 ΗΕ 414806<br />
             </p>

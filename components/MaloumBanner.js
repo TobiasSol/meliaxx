@@ -225,8 +225,8 @@ const MaloumBanner = ({ ofBannerVisible }) => {
               </div>
             </div>
 
-            {/* Melia Foto - rechts positioniert und gespiegelt */}
-            <div className="absolute right-0 bottom-0 w-[250px] h-[80%]">
+            {/* Melia Foto - angepasste Position ganz rechts */}
+            <div className="absolute -right-36 bottom-0 w-[300px] h-[80%]">
               <Image
                 src="/OFbanner/melia.png"
                 alt="Melia"
@@ -285,7 +285,7 @@ const MaloumBanner = ({ ofBannerVisible }) => {
             </div>
 
             {/* Chat Button mit Glanz-Animation */}
-            <div className="absolute right-[27%] bottom-20 w-[260px]">
+            <div className="absolute left-8 bottom-20 w-[260px]">
               <a 
                 href="https://tinyurl.com/3zht9dfw"
                 target="_blank"

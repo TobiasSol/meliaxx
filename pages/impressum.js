@@ -14,24 +14,25 @@ export default function Impressum() {
           <section className="mb-8">
             <h2 className="text-2xl font-bold text-[#d0b48f] mb-4">Angaben gemäß § 5 TMG</h2>
             <p className="text-white">
-            Folgt
+            Arkani Media Ltd <br />
+            Tepeleniou street 13, court 3, 3rd floor <br />
+            8010, paphos <br />
+            Cyprus <br />
+            Reg. Number: <br />
+Reg. Number:<br />
+ΗΕ 414806<br />
             </p>
           </section>
 
           <section className="mb-8">
             <h2 className="text-2xl font-bold text-[#d0b48f] mb-4">Kontakt</h2>
             <p className="text-white">
-            Folgt
+            
               E-Mail: kontakt@meliax.de
             </p>
           </section>
 
-          <section className="mb-8">
-            <h2 className="text-2xl font-bold text-[#d0b48f] mb-4">Umsatzsteuer-ID</h2>
-            <p className="text-white">
-            Folgt
-            </p>
-          </section>
+         
 
           <section className="mb-8">
             <h2 className="text-2xl font-bold text-[#d0b48f] mb-4">Streitschlichtung</h2>

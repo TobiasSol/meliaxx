@@ -6,9 +6,23 @@ import Script from 'next/script';
 import OnlyFansBanner from '../components/OnlyFansBanner';
 import MaloumBanner from '../components/MaloumBanner';
 import { useState } from 'react';
+import { useRouter } from 'next/router';
 
 function MyApp({ Component, pageProps }) {
   const [ofBannerVisible, setOfBannerVisible] = useState(false);
+  const router = useRouter();
+
+  // Liste der Seiten, auf denen keine Banner angezeigt werden sollen
+  const pagesWithoutBanners = [
+    '/impressum', 
+    '/datenschutz', 
+    '/agb', 
+    '/kontakt',
+    '/login',
+    '/admin/login',
+    '/admin'
+  ];
+  const shouldShowBanners = !pagesWithoutBanners.includes(router.pathname);
 
   return (
     <>
@@ -35,8 +49,12 @@ function MyApp({ Component, pageProps }) {
 
       <FontProvider>
         <AgeVerificationPreloader />
-        <OnlyFansBanner onVisibilityChange={setOfBannerVisible} />
-        <MaloumBanner ofBannerVisible={ofBannerVisible} />
+        {shouldShowBanners && (
+          <>
+            <OnlyFansBanner onVisibilityChange={setOfBannerVisible} />
+            <MaloumBanner ofBannerVisible={ofBannerVisible} />
+          </>
+        )}
         <Component {...pageProps} />
       </FontProvider>
     </>

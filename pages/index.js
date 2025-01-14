@@ -27,65 +27,11 @@ export default function Home() {
       }
       
       const data = await response.json();
-      if (data.length === 0) {
-        setAdminVideos([
-          {
-            id: 1,
-            title: "Zimmermädchen Blowjob Chef Lia Fox",
-            description: "Sexy Zimmermädchen Service im Hotel",
-            price: 129.99,
-            thumbnail_url: "/videosection/meliaxxzimmermadchen.png",
-            preview_url: null
-          },
-          {
-            id: 2,
-            title: "Public Sex Porn Lia Fox",
-            description: "Public Hot Action Porn",
-            price: 134.99,
-            thumbnail_url: "/videosection/melanixpublics.png",
-            preview_url: null
-          },
-          {
-            id: 3,
-            title: "Amateur Porn Movie Lia Fox",
-            description: "Exhibitionistisches ficken führt zu abspritzen auf den dicken arsch für amateurin Lia Fox - MydirtyHobby",
-            price: 139.99,
-            thumbnail_url: "/videosection/liafoxback.png",
-            preview_url: null
-          }
-        ]);
-      } else {
-        setAdminVideos(data);
-      }
+      setAdminVideos(data);
     } catch (error) {
       console.error('Error fetching videos:', error);
-      // Fallback zu Beispiel-Videos im Fehlerfall
-      setAdminVideos([
-        {
-          id: 1,
-          title: "Zimmermädchen Blowjob Chef Lia Fox",
-          description: "Sexy Zimmermädchen Service im Hotel",
-          price: 129.99,
-          thumbnail_url: "/videosection/meliaxxzimmermadchen.png",
-          preview_url: null
-        },
-        {
-          id: 2,
-          title: "Zimmermädchen Teil 2",
-          description: "Verführerische Überraschung im Hotelzimmer",
-          price: 34.99,
-          thumbnail_url: "/videosection/meliaxxzimmermadchen.png",
-          preview_url: null
-        },
-        {
-          id: 3,
-          title: "Zimmermädchen Teil 3",
-          description: "Heißer Roomservice Deluxe",
-          price: 39.99,
-          thumbnail_url: "/videosection/meliaxxzimmermadchen.png",
-          preview_url: null
-        }
-      ]);
+      // Setzen Sie einen Fallback-Wert
+      setAdminVideos([]);
     } finally {
       setLoading(false);
     }

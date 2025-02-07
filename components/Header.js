@@ -81,7 +81,7 @@ export default function Header() {
               
               {/* Social Media Icons - Instagram, TikTok, Twitter */}
               <a 
-                href="https://www.instagram.com/me.lia.x"
+                href="https://www.instagram.com/lia.the.real"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-[#d0b48f] hover:text-[#e3cbaa] transition-colors"
@@ -141,7 +141,7 @@ export default function Header() {
               <Link href="/#videos">VIDEOS</Link>
               <Link href="/#shop">SHOP</Link>
               <Link href="/#wishlist">WISHLIST</Link>
-              <Link href="https://www.instagram.com/me.lia.x">INSTAGRAM</Link>
+              <Link href="https://www.instagram.com/lia.the.real">INSTAGRAM</Link>
               <Link href="https://www.tiktok.com/@me.lia.x">TIKTOK</Link>
               <Link href="https://twitter.com/me_lia_x">TWITTER</Link>
             </div>

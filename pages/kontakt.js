@@ -73,7 +73,7 @@ export default function Kontakt() {
               <div className="space-y-4 text-white">
                 <p>
                   <strong className="text-[#d0b48f]">E-Mail:</strong><br />
-                  kontakt@meliax.de
+                  kontakt@meliaxx.de
                 </p>
                
                 <p>

@@ -28,7 +28,7 @@ Reg. Number:<br />
             <h2 className="text-2xl font-bold text-[#d0b48f] mb-4">Kontakt</h2>
             <p className="text-white">
             
-              E-Mail: kontakt@meliax.de
+              E-Mail: kontakt@meliaxx.de
             </p>
           </section>
 
